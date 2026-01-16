@@ -1,0 +1,23 @@
+meta {
+  name: Test Case Summary Detail 
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{URL}}/api/v1/test-case/summary/:test_case_id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  test_case_id: 9261
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

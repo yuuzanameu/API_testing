@@ -1,0 +1,28 @@
+meta {
+  name: update env
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{URL}}/api/v1/env/1
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "label" : "Atuhntication1",
+      "url" : "https://app.nostro.co1",
+      "username" : "",
+      "password" : ""
+  }
+}
+
+settings {
+  encodeUrl: true
+}

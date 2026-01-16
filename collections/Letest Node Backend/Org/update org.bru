@@ -1,0 +1,25 @@
+meta {
+  name: update org
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/api/v1/org
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  org_name: random
+  org_url: https://localhost:3000
+  org_logo: @file(_kShL4pa0/Screenshot (96).png)
+}
+
+settings {
+  encodeUrl: true
+}

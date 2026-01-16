@@ -1,0 +1,156 @@
+meta {
+  name: update credits
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/api/v1/credits/update-credits
+  body: json
+  auth: apikey
+}
+
+headers {
+  X-Timestamp: {{timestamp}}
+}
+
+auth:apikey {
+  key: X-Signature
+  value: {{signature}}
+  placement: header
+}
+
+body:json {
+  {
+      "user_id": 202,
+      "total": 2,
+      "event_type": "run",
+      "data": {
+          "test_case": {
+              "id": 10689,
+              "title": "asas",
+              "credits": 2, 
+              "steps":[
+                  "Enter username",
+                  "Enter password"
+              ]
+          },
+          "dependencies": []
+      }
+  }
+  
+}
+
+script:pre-request {
+  const rawBody = req.getBody().raw
+  const timestamp = Date.now().toString()
+  // Create HMAC SHA256 signature
+  function createHMAC(payload) {
+      const message = `${payload}.${timestamp}`;
+      return CryptoJS.HmacSHA256(message, bru.getEnvVar("AI_KEY")).toString();
+  }
+  
+  const signature = createHMAC(rawBody);
+  
+  console.log(rawBody)
+  // Save values into variables for request usage
+  bru.setVar("signature", signature);
+  bru.setVar("timestamp", timestamp);
+  
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: local db
+  
+  request: {
+    url: {{URL}}/api/v1/credits/update-credits
+    method: POST
+    mode: json
+    headers: {
+      X-Timestamp: {{timestamp}}
+    }
+  
+    body:json: {
+      {
+          "user_id": 1,
+          "total": 8,
+          "event_type": "run",
+          "data": {
+              "test_case": {
+                  "id": 3,
+                  "title": "asas",
+                  "credits": 4, 
+                  "steps":[
+                      "Enter username blah blah",
+                      "Enter password blah blah"
+                  ]
+              },
+              "dependencies": [
+                  {
+                      "id": 2,
+                      "credits": 2,
+                      "steps": [
+                          "Enter username blah blah",
+                          "Enter password blah blah"
+                      ]
+                  },
+                  {
+                      "id": 1,
+                      "credits": 2,
+                      "steps": [
+                          "Enter username blah blah",
+                          "Enter password blah blah"
+                      ]
+                  }
+              ]
+          }
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 75
+      ETag: W/"4b-oCJnLhjInUvT/XMvGQnpCjI6UL4"
+      Date: Sun, 14 Sep 2025 13:46:09 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "8 credits(s) consumed successfully",
+            "data": true
+        }
+      '''
+    }
+  }
+}

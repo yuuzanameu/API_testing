@@ -1,0 +1,12 @@
+opencollection: 1.0.0
+info:
+  name: "Letest"
+  type: workspace
+
+collections:
+  - name: "Letest Node Backend"
+    path: "collections/Letest Node Backend"
+
+specs:
+
+docs: ''

@@ -1,0 +1,15 @@
+meta {
+  name: Blog Comments
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{URL}}/api/v1/blogs/8/comments
+  body: multipartForm
+  auth: none
+}
+
+settings {
+  encodeUrl: true
+}

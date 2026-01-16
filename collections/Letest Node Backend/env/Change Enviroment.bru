@@ -1,0 +1,25 @@
+meta {
+  name: Change Enviroment
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{URL}}/api/v1/env/change
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "environment_id" : "103"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

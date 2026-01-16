@@ -1,0 +1,185 @@
+meta {
+  name: run assertions
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/api/v1/api-testing/api/:api_id/run-assertions
+  body: json
+  auth: bearer
+}
+
+params:path {
+  api_id: 41
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "response": {
+          "success": true,
+          "message": "User login successfully",
+          "data": {
+              "id": 99,
+              "email": "bokugavladi@proton.me",
+              "two_fa_enabled": false,
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTksImVtYWlsIjoiYm9rdWdhdmxhZGlAcHJvdG9uLm1lIiwiaWF0IjoxNzY0MzE0OTUxLCJleHAiOjE3NjQzNTgxNTF9.BngA439rPDAI6XTlYTGxM-7ZXPK3JwfsTYo2pRuo7EY",
+              "is_onboarding": false
+          }
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/api/:api_id/run-assertions
+    method: POST
+    mode: json
+    params:path: {
+      api_id: 16
+    }
+  
+    body:json: {
+      {
+          "response": {
+              "body": {
+                  "token": "token"
+              }
+          }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 332
+      ETag: W/"14c-JgwquSSh8rjR2T2kviNCpcaqhRM"
+      Date: Mon, 03 Nov 2025 11:53:42 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "api_assertions_run",
+            "data": {
+                "total": 2,
+                "passed": 1,
+                "failed": 1,
+                "results": [
+                    {
+                        "passed": false,
+                        "expr": "res.body.token",
+                        "operator": "equals",
+                        "expected_value": "12121",
+                        "error": "expected 'token' to equal '12121'",
+                        "actual": "token"
+                    },
+                    {
+                        "passed": true,
+                        "expr": "res.body.token",
+                        "operator": "equals",
+                        "expected_value": "token"
+                    }
+                ]
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: response required
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/api/:api_id/run-assertions
+    method: POST
+    mode: json
+    params:path: {
+      api_id: 16
+    }
+  
+    body:json: {
+      {
+          // "response": {
+          //     "body": {
+          //         "token": "token"
+          //     }
+          // }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 62
+      ETag: W/"3e-XkN4+FdYCcRMrT1Z8ehSxL+wTHo"
+      Date: Mon, 03 Nov 2025 11:54:41 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: Bad Request
+      text: 400
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": false,
+            "message": "response is required",
+            "errors": []
+        }
+      '''
+    }
+  }
+}

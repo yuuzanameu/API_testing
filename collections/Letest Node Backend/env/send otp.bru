@@ -1,0 +1,19 @@
+meta {
+  name: send otp
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{URL}}/api/v1/env/268/send-otp
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

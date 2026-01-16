@@ -1,0 +1,25 @@
+meta {
+  name: Issue List
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{URL}}/api/v1/issues?page=1&limit=10&environment_id=268
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 1
+  limit: 10
+  environment_id: 268
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

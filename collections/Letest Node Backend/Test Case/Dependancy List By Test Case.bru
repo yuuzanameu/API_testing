@@ -1,0 +1,23 @@
+meta {
+  name: Dependancy List By Test Case
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{URL}}/api/v1/test-case/:test_case_id/dependency
+  body: none
+  auth: bearer
+}
+
+params:path {
+  test_case_id: 7806
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

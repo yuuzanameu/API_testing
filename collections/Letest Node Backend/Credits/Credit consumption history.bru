@@ -1,0 +1,86 @@
+meta {
+  name: Credit consumption history
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{URL}}/api/v1/credits/history?page=1&limit=2
+  body: text
+  auth: bearer
+}
+
+params:query {
+  page: 1
+  limit: 2
+}
+
+headers {
+  X-Timestamp: {{timestamp}}
+  X-Signature: {{signature}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  ```
+  {
+    "success": true,
+    "message": "fetched credits history",
+    "data": {
+      "user_id": 2,
+      "history": [
+        {
+          "id": 1,
+          "name": "asas",
+          "type": "run",
+          "test_case_id": 11,
+          "utilizied_credits": 8
+        },
+        {
+          "id": 2,
+          "name": "asas",
+          "type": "run",
+          "test_case_id": null,
+          "utilizied_credits": 8
+        },
+        {
+          "id": 3,
+          "name": "asas",
+          "type": "run",
+          "test_case_id": 11,
+          "utilizied_credits": 8
+        },
+        {
+          "id": 4,
+          "name": "asas",
+          "type": "run",
+          "test_case_id": 11,
+          "utilizied_credits": 8
+        },
+        {
+          "id": 5,
+          "name": "asas",
+          "type": "run",
+          "test_case_id": 11,
+          "utilizied_credits": 5
+        },
+        {
+          "id": 6,
+          "name": "asas",
+          "type": "run",
+          "test_case_id": 11,
+          "utilizied_credits": 5
+        }
+      ]
+    }
+  }
+  
+   ```
+}

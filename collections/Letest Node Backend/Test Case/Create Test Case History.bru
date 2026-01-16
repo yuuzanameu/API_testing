@@ -1,0 +1,51 @@
+meta {
+  name: Create Test Case History
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{URL}}/api/v1/test-case-history
+  body: json
+  auth: inherit
+}
+
+headers {
+  X-Signature: {{signature}}
+  X-Timestamp: {{timestamp}}
+}
+
+body:json {
+  {
+      "test_case_id" : 1,
+      "execution_status":"pending", 
+      "execution_start_date" : "2025-08-17 12:00:00",
+      "execution_end_date" : "2025-08-17 12:00:11",
+      "duration" : "11",
+      "logs" : ""
+  }
+}
+
+script:pre-request {
+  // Example payload and timestamp
+  const normalizedBody = req.getBody().raw
+  const timestamp = Date.now().toString();
+  // Create HMAC SHA256 signature
+  function createHMAC(payload) {
+      const message = `${payload}.${timestamp}`;
+      console.log(message)
+      return CryptoJS.HmacSHA256(message, bru.getEnvVar("AI_KEY")).toString();
+  }
+  
+  const signature = createHMAC(normalizedBody);
+  
+  // Save values into variables for request usage
+  bru.setVar("signature", signature);
+  bru.setVar("timestamp", timestamp);
+  
+  
+}
+
+settings {
+  encodeUrl: true
+}

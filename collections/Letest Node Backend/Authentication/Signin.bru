@@ -1,0 +1,215 @@
+meta {
+  name: Signin
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{URL}}/api/v1/signin
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      // "email" : "kosij57410@namestal.com",
+      // "password":"Sherlock@4321"
+      // "email": "xaloke3313@cerisun.com",
+      // "password": "Test@123"
+      // "email": "shivam@sodio.tech",
+      // "password": "Letest@123!"
+      // "email": "nobita@personal.example.com",
+      // "password": "Sherlock@4321"
+      // "email": "siddharth@sodio.tech",
+      // "password": "Sid@123456"
+      // "email": "novohe2989@noidem.com",
+      // "password":"Sherlock@4321" 
+      // "email" :"dead.baboon.neeq@rapidletter.net",
+      // "password": "Letest@123"
+      //    "email": "febafa6143@lorkex.com",
+      //    "password": "Letest@123"
+      // "email": "exclusive.tortoise.eivm@rapidletter.net",
+      // "password": "Letest@123"
+      // "email": "admin@gmail.com",
+      // "password": "Sherlock@1234"
+      "email": "bokugavladi@proton.me",
+      "password": "Password@1772"
+      // "email": "wipefay269@cerisun.com",
+      // "password": "Bots@991" 
+  }
+}
+
+script:post-response {
+  // Parse the JSON response
+  let response = res.getBody();
+  
+  // Check if the response is successful and contains a token
+  if (response.success && response.data && response.data.token) {
+      // Set the token as a global variable
+      bru.setEnvVar("token", response.data.token);
+  //     bru.setGlobalEnvVar("token", response.data.token);
+      
+      // (Optional) Log the token for debugging
+      console.log("Token set:", response.data.token);
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+docs {
+  I can set up some basic description
+}
+
+example {
+  name: Signin
+  
+  request: {
+    url: {{URL}}/api/v1/signin
+    method: POST
+    mode: json
+    body:json: {
+      {
+          // "email" : "kosij57410@namestal.com",
+          // "password":"Sherlock@4321"
+          // "email": "bokugavladi@proton.me",
+          // "password": "Password@1772"
+          // "email": "shivam@sodio.tech",
+          // "password": "Letest@123!"
+          "email": "nobita@personal.example.com",
+          "password": "Sherlock@4321"
+          // "email": "siddharth@sodio.tech",
+          // "password": "Sid@123456"
+          // "email": "novohe2989@noidem.com",
+          // "password":"Sherlock@4321" 
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 350
+      ETag: W/"15e-iZuSfUpcBS5aeJNCwmAfmH4GlrE"
+      Date: Wed, 10 Sep 2025 10:51:57 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "User login successfully",
+            "data": {
+                "id": 1,
+                "email": "nobita@personal.example.com",
+                "token": "{{vault:json-web-token}}",
+                "is_onboarding": false,
+                "two_fa_enabled": false
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Signin
+  
+  request: {
+    url: {{URL}}/api/v1/signin
+    method: POST
+    mode: json
+    body:json: {
+      {
+          // "email" : "kosij57410@namestal.com",
+          // "password":"Sherlock@4321"
+          "email": "bokugavladi@proton.me",
+          "password": "Password@1772"
+          // "email": "shivam@sodio.tech",
+          // "password": "Letest@123!"
+          // "email": "nobita@personal.example.com",
+          // "password": "Sherlock@4321"
+          // "email": "siddharth@sodio.tech",
+          // "password": "Sid@123456"
+          // "email": "novohe2989@noidem.com",
+          // "password":"Sherlock@4321" 
+      //     dead.baboon.neeq@rapidletter.net
+      // Letest@123
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Server: nginx
+      Date: Wed, 17 Sep 2025 06:00:27 GMT
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 338
+      Connection: keep-alive
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      ETag: W/"152-RIo/TqokswXYLYQvfxkSwz6FK08"
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "User login successfully",
+            "data": {
+                "id": 99,
+                "email": "bokugavladi@proton.me",
+                "token": "{{vault:json-web-token}}",
+                "is_onboarding": false,
+                "two_fa_enabled": false
+            }
+        }
+      '''
+    }
+  }
+}

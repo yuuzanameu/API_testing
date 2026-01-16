@@ -1,0 +1,19 @@
+meta {
+  name: generate invoice
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{URL}}/api/v1/subscription/send-invoice
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

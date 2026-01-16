@@ -1,0 +1,90 @@
+meta {
+  name: Get Profile
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{URL}}/api/v1/profile
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Get Profile
+  
+  request: {
+    url: {{URL}}/api/v1/profile
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 719
+      ETag: W/"2cf-Omv1ej8bkqjWlezH+hhJoWXy0+w"
+      Date: Wed, 10 Sep 2025 16:51:03 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "User fetched successfully",
+            "data": {
+                "id": 1,
+                "full_name": "test",
+                "company_name": "json",
+                "email": "nobita@personal.example.com",
+                "password": "$2b$10$JNv53lwevCvAmDsEkU3TAubSqZ4YnOctIP3CY3jF9DVeeB.w18XK.",
+                "subscription_plan_status": "active",
+                "current_environment_id": 1,
+                "isVerified": 0,
+                "verificationToken": "{{vault:json-web-token}}",
+                "profile_image": null,
+                "role_id": 2,
+                "project_id": 1,
+                "available_credits": 6192,
+                "total_environments": 2,
+                "total_modules": 7,
+                "total_test_cases": 10,
+                "environment_id": 1,
+                "is_onboarding": false,
+                "devUser": false,
+                "two_fa_enabled": false
+            }
+        }
+      '''
+    }
+  }
+}

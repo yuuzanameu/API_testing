@@ -1,0 +1,94 @@
+meta {
+  name: run strategist
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{URL}}/api/v1/api-testing/collection/run-strategist?collection_id=46
+  body: text
+  auth: bearer
+}
+
+params:query {
+  collection_id: 46
+}
+
+headers {
+  X-Timestamp: {{timestamp}}
+  X-Signature: {{signature}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/collection/run-strategist?collection_id=17&env_id=5
+    method: POST
+    mode: none
+    params:query: {
+      collection_id: 17
+      env_id: 5
+    }
+  
+    headers: {
+      X-Timestamp: {{timestamp}}
+      X-Signature: {{signature}}
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 343
+      ETag: W/"157-Ubx3s9hOhxn9mnoOIKvX62DoTB4"
+      Date: Thu, 13 Nov 2025 07:38:00 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "strategist results processed",
+            "data": {
+                "analysis_id": "61c99647-6b53-45bd-a12c-5a55d1dcd7cb",
+                "session_id": "f36777e4-7a61-406c-b4e8-764f1e9d1d73",
+                "websocket_url": "wss://staging-ai-services-api.letest.ai/api/v1/api-testing/strategist/ws/f36777e4-7a61-406c-b4e8-764f1e9d1d73",
+                "websocket_protocol": "wss",
+                "status": "ready"
+            }
+        }
+      '''
+    }
+  }
+}

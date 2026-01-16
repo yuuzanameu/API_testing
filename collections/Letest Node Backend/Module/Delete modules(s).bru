@@ -1,0 +1,25 @@
+meta {
+  name: Delete modules(s)
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{URL}}/api/v1/categories
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "categories": []
+  }
+}
+
+settings {
+  encodeUrl: true
+}

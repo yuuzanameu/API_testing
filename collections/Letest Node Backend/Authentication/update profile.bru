@@ -1,0 +1,20 @@
+meta {
+  name: update profile
+  type: http
+  seq: 10
+}
+
+put {
+  url: {{URL}}/api/v1/update-profile/41
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  full_name: 
+  profile_image: @file()
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,31 @@
+meta {
+  name: move test case to different module
+  type: http
+  seq: 21
+}
+
+put {
+  url: {{URL}}/api/v1/test-case/:test_case_id/move-category?new_category_id=3
+  body: multipartForm
+  auth: bearer
+}
+
+params:query {
+  new_category_id: 3
+}
+
+params:path {
+  test_case_id: 3
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  file: @file(/C:/Users/admin/Downloads/PropCases.csv)
+}
+
+settings {
+  encodeUrl: true
+}

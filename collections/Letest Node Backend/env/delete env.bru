@@ -1,0 +1,19 @@
+meta {
+  name: delete env
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{URL}}/api/v1/env/198
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

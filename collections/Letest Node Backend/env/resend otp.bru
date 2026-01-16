@@ -1,0 +1,19 @@
+meta {
+  name: resend otp
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{URL}}/api/v1/env/197/resend-otp
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

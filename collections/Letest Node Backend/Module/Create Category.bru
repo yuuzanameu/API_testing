@@ -1,0 +1,28 @@
+meta {
+  name: Create Category
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{URL}}/api/v1/categories
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "project_id" : "1",
+      "environment_id" : 1,
+      "name" : "New Cateogry",
+      "description" : "just a new category" // optional 
+  }
+}
+
+settings {
+  encodeUrl: true
+}

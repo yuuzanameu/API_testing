@@ -1,0 +1,27 @@
+meta {
+  name: export test cases csv
+  type: http
+  seq: 22
+}
+
+get {
+  url: {{URL}}/api/v1/export-test-cases?environment_id=228
+  body: none
+  auth: bearer
+}
+
+params:query {
+  environment_id: 228
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  pass query param environment_id to get data of frequency of failed test cases as downloadable csv
+}

@@ -1,0 +1,94 @@
+meta {
+  name: Generate steps
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/api/v1/ai-generate-test
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "category_id": 546,
+      "project_id": 123,
+      "environment_id": 228,
+      "dependancy_id": null,
+      "goal": "To verify if evaluation stage page appears when navigated to challenges - > new challenges in side-bar and clicked on start your challenge -> verify is the section is Evaluation stages if yes then end the task if no then also end the task do nothing",
+      "expected_result": "Clicking the \"START YOUR CHALLENGE\" button, it should navigate Evaluation Stages page."
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Generate steps
+  
+  request: {
+    url: {{URL}}/api/v1/ai-generate-test
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "category_id": 546,
+          "project_id": 123,
+          "environment_id": 228,
+          "dependancy_id": null,
+          "goal": "To verify if evaluation stage page appears when navigated to challenges - > new challenges in side-bar and clicked on start your challenge -> verify is the section is Evaluation stages if yes then end the task if no then also end the task do nothing",
+          "expected_result": "Clicking the \"START YOUR CHALLENGE\" button, it should navigate Evaluation Stages page."
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 193
+      ETag: W/"c1-6JS3CytxSQ3WsUt1HBc8pybVFp4"
+      Date: Wed, 17 Sep 2025 09:13:09 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: Created
+      text: 201
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "generate_test_initiated",
+            "data": {
+                "user_id": 99,
+                "websocket_url": "wss://staging-ai-services.letest.ai/ws/logs/73a245fa7622f0fdd354",
+                "session_id": "73a245fa7622f0fdd354"
+            }
+        }
+      '''
+    }
+  }
+}

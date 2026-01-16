@@ -1,0 +1,179 @@
+meta {
+  name: run api
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/api/v1/api-testing/api/run
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "api_id": 1140,
+    "collection_id": 23
+  //   "env_id": 7
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/api/run
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "api_id": 16,
+        "collection_id": 3,
+        "env_id": 7
+      }
+      
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 1668
+      ETag: W/"684-WZOmgGlUl/9IQLfb9rwDTUSlcZU"
+      Date: Mon, 03 Nov 2025 07:24:49 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "api_finished_run",
+            "data": {
+                "api_response": {
+                    "status": 200,
+                    "headers": [
+                        {
+                            "key": "server",
+                            "value": "nginx"
+                        },
+                        {
+                            "key": "date",
+                            "value": "Mon, 03 Nov 2025 07:24:49 GMT"
+                        },
+                        {
+                            "key": "content-type",
+                            "value": "application/json; charset=utf-8"
+                        },
+                        {
+                            "key": "content-length",
+                            "value": "338"
+                        },
+                        {
+                            "key": "connection",
+                            "value": "keep-alive"
+                        },
+                        {
+                            "key": "content-security-policy",
+                            "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                        },
+                        {
+                            "key": "cross-origin-opener-policy",
+                            "value": "same-origin"
+                        },
+                        {
+                            "key": "cross-origin-resource-policy",
+                            "value": "same-origin"
+                        },
+                        {
+                            "key": "origin-agent-cluster",
+                            "value": "?1"
+                        },
+                        {
+                            "key": "referrer-policy",
+                            "value": "no-referrer"
+                        },
+                        {
+                            "key": "strict-transport-security",
+                            "value": "max-age=31536000; includeSubDomains"
+                        },
+                        {
+                            "key": "x-content-type-options",
+                            "value": "nosniff"
+                        },
+                        {
+                            "key": "x-dns-prefetch-control",
+                            "value": "off"
+                        },
+                        {
+                            "key": "x-download-options",
+                            "value": "noopen"
+                        },
+                        {
+                            "key": "x-frame-options",
+                            "value": "SAMEORIGIN"
+                        },
+                        {
+                            "key": "x-permitted-cross-domain-policies",
+                            "value": "none"
+                        },
+                        {
+                            "key": "x-xss-protection",
+                            "value": "0"
+                        },
+                        {
+                            "key": "access-control-allow-origin",
+                            "value": "*"
+                        },
+                        {
+                            "key": "etag",
+                            "value": "W/\"152-sJQnKbJD0Jbae+fNcMSiAKXQzQU\""
+                        }
+                    ],
+                    "body": {
+                        "success": true,
+                        "message": "User login successfully",
+                        "data": {
+                            "id": 99,
+                            "email": "bokugavladi@proton.me",
+                            "two_fa_enabled": false,
+                            "token": "{{vault:json-web-token}}",
+                            "is_onboarding": false
+                        }
+                    }
+                }
+            }
+        }
+      '''
+    }
+  }
+}

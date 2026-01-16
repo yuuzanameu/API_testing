@@ -1,0 +1,35 @@
+meta {
+  name: report collection run
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{URL}}/api/v1/api-testing/collection-run-report
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "collection_id": 3,
+      "user_id": 1,
+      "status": "failed",
+      "results": [
+          {
+              "api_id": 28,
+              "status": "passed", // or failed
+              "logs": "failed because of ..." //applicable when failure
+          },
+          {
+              "api_id": 29,
+              "status": "passed", // or failed
+              "logs": "failed because of ..." //applicable when failure
+          }
+      ]
+  }
+}
+
+settings {
+  encodeUrl: true
+}

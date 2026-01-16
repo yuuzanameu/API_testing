@@ -1,0 +1,19 @@
+meta {
+  name: Cancel Subscription
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{URL}}/api/v1/subscription/cancel
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

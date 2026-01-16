@@ -1,0 +1,425 @@
+meta {
+  name: trends (graphs)
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{URL}}/api/v1/admin/trends?trend=test_cases&timeframe=daily
+  body: text
+  auth: bearer
+}
+
+params:query {
+  trend: test_cases
+  timeframe: daily
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  ```
+  enums for trend: total_users, paying_users, test_cases, issues_resolved
+  timeframe=weekly, monthly, yearly, daily
+  
+   ```
+}
+
+example {
+  name: users yearly
+  
+  request: {
+    url: {{URL}}/api/v1/admin/trends?trend=total_users&timeframe=yearly
+    method: GET
+    mode: text
+    params:query: {
+      trend: total_users
+      timeframe: yearly
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 120
+      ETag: W/"78-/akaYhVHynOR4HkmKmPJJolHL08"
+      Date: Wed, 08 Oct 2025 01:29:14 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "trends fetched",
+            "data": {
+                "timeframe": "yearly",
+                "total": "138",
+                "data": {
+                    "2025": 138
+                },
+                "range": null
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: test cases monthly
+  
+  request: {
+    url: {{URL}}/api/v1/admin/trends?trend=test_cases&timeframe=monthly
+    method: GET
+    mode: text
+    params:query: {
+      trend: test_cases
+      timeframe: monthly
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 206
+      ETag: W/"ce-uBlTd6vvzNJ/ixYzKGXfOoyZq6I"
+      Date: Wed, 08 Oct 2025 01:43:04 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "trends fetched",
+            "data": {
+                "timeframe": "monthly",
+                "total": "2871",
+                "data": {
+                    "1": 0,
+                    "2": 0,
+                    "3": 0,
+                    "4": 0,
+                    "5": 0,
+                    "6": 0,
+                    "7": 2002,
+                    "8": 839,
+                    "9": 21,
+                    "10": 9,
+                    "11": 0,
+                    "12": 0
+                },
+                "range": {
+                    "min": 1,
+                    "max": 12
+                }
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: issues resolved yearly
+  
+  request: {
+    url: {{URL}}/api/v1/admin/trends?trend=issues_resolved&timeframe=yearly
+    method: GET
+    mode: text
+    params:query: {
+      trend: issues_resolved
+      timeframe: yearly
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 116
+      ETag: W/"74-lUO23Ayr4pr4CDN8/HdRMl+M2UE"
+      Date: Thu, 09 Oct 2025 01:05:40 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "trends fetched",
+            "data": {
+                "timeframe": "yearly",
+                "total": 27,
+                "data": {
+                    "2025": 27
+                },
+                "range": null
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: users weekly
+  
+  request: {
+    url: {{URL}}/api/v1/admin/trends?trend=total_users&timeframe=weekly
+    method: GET
+    mode: text
+    params:query: {
+      trend: total_users
+      timeframe: weekly
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 146
+      ETag: W/"92-D6nKBzX3HsFiU4/R74wrO94VPPk"
+      Date: Thu, 09 Oct 2025 01:28:23 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "trends fetched",
+            "data": {
+                "timeframe": "weekly",
+                "total": "138",
+                "data": {
+                    "1": 0,
+                    "2": 3,
+                    "3": 0,
+                    "4": 1
+                },
+                "range": {
+                    "min": 1,
+                    "max": 4
+                }
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: paying users daily
+  
+  request: {
+    url: {{URL}}/api/v1/admin/trends?trend=paying_users&timeframe=daily
+    method: GET
+    mode: text
+    params:query: {
+      trend: paying_users
+      timeframe: daily
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 135
+      ETag: W/"87-ALolUNgdaHrlfdArKN10wGLPqDc"
+      Date: Thu, 09 Oct 2025 01:30:38 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "trends fetched",
+            "data": {
+                "timeframe": "daily",
+                "total": "9",
+                "data": {
+                    "1": 9,
+                    "2": 9,
+                    "3": 9,
+                    "4": 9,
+                    "5": 9,
+                    "6": 9,
+                    "7": 9
+                }
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: paying users weekly
+  
+  request: {
+    url: {{URL}}/api/v1/admin/trends?trend=paying_users&timeframe=weekly
+    method: GET
+    mode: text
+    params:query: {
+      trend: paying_users
+      timeframe: weekly
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 118
+      ETag: W/"76-TtQ8H5huGERbsuhcICywQsSGWyg"
+      Date: Thu, 09 Oct 2025 01:35:13 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "trends fetched",
+            "data": {
+                "timeframe": "weekly",
+                "total": "9",
+                "data": {
+                    "1": 9,
+                    "2": 9,
+                    "3": 9,
+                    "4": 9
+                }
+            }
+        }
+      '''
+    }
+  }
+}

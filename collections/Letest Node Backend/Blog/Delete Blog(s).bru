@@ -1,0 +1,23 @@
+meta {
+  name: Delete Blog(s)
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{URL}}/api/v1/blogs/:blog_id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  blog_id: 12
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Test Case Update
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{URL}}/api/v1/test-cases/11
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {"category_id":3,"project_id":"1","environment_id":"1","dependancy_id":"","title":"To verify \"Account Type\" tiles.","steps":["1. Select the \"Account Type\" as \"Aggresive\" option.\n2. Click on the \"Next\" button.\n\n"],"expected_outcome":"Selecting the Account Type as \"Aggresive\" and navigate to Confirm Order page.","status":"active"}
+}
+
+settings {
+  encodeUrl: true
+}

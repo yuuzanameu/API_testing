@@ -1,0 +1,40 @@
+meta {
+  name: Test cases list
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://qa-automator-staging.letest.ai/api/v1/test-cases?environment_id=268&category_id=675
+  body: none
+  auth: bearer
+}
+
+params:query {
+  environment_id: 268
+  category_id: 675
+  ~search_in: test_cases
+  ~search_text: Confirm
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  ```
+  this api can takes the following params:
+  search_text
+  search_in
+  status
+  execution_start_date
+  execution_status
+  pagination params:
+  page, limit
+  
+   ```
+}

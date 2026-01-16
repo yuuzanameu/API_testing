@@ -1,0 +1,28 @@
+meta {
+  name: Create New Step
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{URL}}/api/v1/test-case-steps
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "test_case_id" : 1,
+      "steps": [
+                  "test step x2"
+              ]
+  }
+}
+
+settings {
+  encodeUrl: true
+}

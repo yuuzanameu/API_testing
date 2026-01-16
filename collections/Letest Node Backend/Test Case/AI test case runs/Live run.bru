@@ -1,0 +1,23 @@
+meta {
+  name: Live run
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/api/v1/live-run/:test_case_id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  test_case_id: 10159
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

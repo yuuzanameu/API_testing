@@ -1,0 +1,48 @@
+meta {
+  name: dashboard
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{URL}}/api/v1/dashboard?environment_id=228
+  body: text
+  auth: bearer
+}
+
+params:query {
+  environment_id: 228
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  this api was updated to report failed test case count for the Test case execution card in user dashboard api.
+  
+  now it returns payload of the form.
+  
+  ``` json
+  {
+      activeTest: {
+          total: number,
+          running: number
+      },
+      runCount: number
+      testCaseExecution: {
+          total: number
+          failed: number
+      },
+      lastRun: {
+          duration: string 
+      },
+      recentResults
+  }
+  
+   ```
+}

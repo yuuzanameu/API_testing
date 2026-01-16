@@ -1,0 +1,19 @@
+meta {
+  name: Test case details
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{URL}}/api/v1/test-cases/:
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

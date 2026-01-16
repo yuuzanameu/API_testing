@@ -1,0 +1,19 @@
+meta {
+  name: Dependancy List
+  type: http
+  seq: 14
+}
+
+get {
+  url: {{URL}}/api/v1/test-case/11/dependency
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

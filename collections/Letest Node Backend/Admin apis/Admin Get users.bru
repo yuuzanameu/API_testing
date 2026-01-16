@@ -1,0 +1,478 @@
+meta {
+  name: Admin Get users
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{URL}}/api/v1/admin/users?plan_status=active&search=Sodio
+  body: none
+  auth: bearer
+}
+
+params:query {
+  plan_status: active
+  search: Sodio
+  ~limit: 10
+  ~page: 3
+  ~sort: desc
+  ~sortBy: created_at
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  plan_status=trial, active, cancelled
+  
+  ```
+  {
+  data: {company_name,email, subscription_status},
+  pagination: {
+  totalItems: number,
+  totalPages: number,
+  currentPage: number,
+  limit: number,
+  hasNextPage: boolean,
+  hasPreviousPage: boolean
+  }
+  }
+  
+   ```
+  
+  f this form.
+  
+  defaults are: limit =10, page=1, sort=desc, sortBy=created_at.
+  
+  you can pass 'asc' or 'desc' to sort. and you can pass 'created_at', 'email', 'company_name', 'subscription_plan_status' to sortBy.
+}
+
+example {
+  name: Admin Get users Copy
+  
+  request: {
+    url: {{URL}}/api/v1/admin/users?limit=10&page=3&sort=desc&sortBy=created_at&plan_status=trial
+    method: GET
+    mode: none
+    params:query: {
+      limit: 10
+      page: 3
+      sort: desc
+      sortBy: created_at
+      plan_status: trial
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 1570
+      ETag: W/"622-nKeYfmECrgAVUchC34Pfk1a5iSI"
+      Date: Wed, 08 Oct 2025 11:20:11 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "Record found",
+            "data": {
+                "data": [
+                    {
+                        "id": 174,
+                        "company_name": "IQVIA",
+                        "subscription_plan_status": null,
+                        "email": "avinash.kumar6@iqvia.com",
+                        "full_name": "Avinash Kumar"
+                    },
+                    {
+                        "id": 173,
+                        "company_name": "Letest.ai",
+                        "subscription_plan_status": null,
+                        "email": "pavixev268@mardiek.com",
+                        "full_name": "Mohammed Atheequr Rahman"
+                    },
+                    {
+                        "id": 171,
+                        "company_name": "COmpany x",
+                        "subscription_plan_status": null,
+                        "email": "xicofew983@jobzyy.com",
+                        "full_name": "Letest"
+                    },
+                    {
+                        "id": 170,
+                        "company_name": "boring company",
+                        "subscription_plan_status": null,
+                        "email": "siddharthh@sodio.tech",
+                        "full_name": "BoringUser"
+                    },
+                    {
+                        "id": 169,
+                        "company_name": "VideoTech",
+                        "subscription_plan_status": null,
+                        "email": "impressed.parrots.vhwv@rapidletter.net",
+                        "full_name": "josh miles"
+                    },
+                    {
+                        "id": 168,
+                        "company_name": "Felatia",
+                        "subscription_plan_status": null,
+                        "email": "impressed.parrot.phwv@rapidletter.net",
+                        "full_name": "Felatia marine"
+                    },
+                    {
+                        "id": 167,
+                        "company_name": "Sodio Technologies",
+                        "subscription_plan_status": null,
+                        "email": "naval.echidna.lsry@rapidletter.net",
+                        "full_name": "Shivam Nampalliwar"
+                    },
+                    {
+                        "id": 166,
+                        "company_name": "Sodio Technologies",
+                        "subscription_plan_status": null,
+                        "email": "prickly.koi.dwcz@rapidletter.net",
+                        "full_name": "Letest AI"
+                    },
+                    {
+                        "id": 165,
+                        "company_name": "Sodio Technologies",
+                        "subscription_plan_status": null,
+                        "email": "external.finch.qeck@rapidletter.net",
+                        "full_name": "Letest AI"
+                    },
+                    {
+                        "id": 163,
+                        "company_name": "KF Plc",
+                        "subscription_plan_status": null,
+                        "email": "dineshbvd@gmail.com",
+                        "full_name": "dinesh Boopalan"
+                    }
+                ],
+                "pagination": {
+                    "totalItems": 138,
+                    "totalPages": 14,
+                    "currentPage": 3,
+                    "limit": 10,
+                    "hasNextPage": true,
+                    "hasPreviousPage": true
+                }
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: active
+  
+  request: {
+    url: {{URL}}/api/v1/admin/users?limit=10&page=3&sort=desc&sortBy=created_at&plan_status=active
+    method: GET
+    mode: none
+    params:query: {
+      limit: 10
+      page: 3
+      sort: desc
+      sortBy: created_at
+      plan_status: active
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 1488
+      ETag: W/"5d0-kn1HaCm87w+hQcO96qEw6NzJ4/8"
+      Date: Wed, 08 Oct 2025 11:20:54 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "Record found",
+            "data": {
+                "data": [
+                    {
+                        "id": 99,
+                        "company_name": "some company",
+                        "subscription_plan_status": "active",
+                        "email": "bokugavladi@proton.me",
+                        "full_name": "okabe rintaro"
+                    },
+                    {
+                        "id": 99,
+                        "company_name": "some company",
+                        "subscription_plan_status": "active",
+                        "email": "bokugavladi@proton.me",
+                        "full_name": "okabe rintaro"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar"
+                    }
+                ],
+                "pagination": {
+                    "totalItems": 138,
+                    "totalPages": 14,
+                    "currentPage": 3,
+                    "limit": 10,
+                    "hasNextPage": true,
+                    "hasPreviousPage": true
+                }
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Admin Get users
+  
+  request: {
+    url: {{URL}}/api/v1/admin/users?plan_status=active&search=Sodio
+    method: GET
+    mode: none
+    params:query: {
+      ~limit: 10
+      ~page: 3
+      ~sort: desc
+      ~sortBy: created_at
+      plan_status: active
+      search: Sodio
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 2021
+      ETag: W/"7e5-P5C2aTO+djgu5L4k3mnMd8RmNgo"
+      Date: Thu, 27 Nov 2025 09:58:37 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "Record found",
+            "data": {
+                "data": [
+                    {
+                        "id": 197,
+                        "company_name": "Sodio Technologies",
+                        "subscription_plan_status": "active",
+                        "email": "informal.kiwi.kism@rapidletter.net",
+                        "full_name": "Letest AI",
+                        "created_at": "2025-09-20T08:06:09.995Z"
+                    },
+                    {
+                        "id": 148,
+                        "company_name": "Sodio Technologies",
+                        "subscription_plan_status": "active",
+                        "email": "sophisticated.sheep.luob@rapidletter.net",
+                        "full_name": "Letest AI",
+                        "created_at": "2025-07-31T15:03:40.198Z"
+                    },
+                    {
+                        "id": 134,
+                        "company_name": "Sodio Technologies",
+                        "subscription_plan_status": "active",
+                        "email": "comparable.chipmunk.nbie@letterprotect.net",
+                        "full_name": "Letest AI",
+                        "created_at": "2025-07-23T03:39:00.635Z"
+                    },
+                    {
+                        "id": 134,
+                        "company_name": "Sodio Technologies",
+                        "subscription_plan_status": "active",
+                        "email": "comparable.chipmunk.nbie@letterprotect.net",
+                        "full_name": "Letest AI",
+                        "created_at": "2025-07-23T03:39:00.635Z"
+                    },
+                    {
+                        "id": 132,
+                        "company_name": "Sodio Tech",
+                        "subscription_plan_status": "active",
+                        "email": "shy.whippet.gyjs@letterprotect.net",
+                        "full_name": "Letest AI",
+                        "created_at": "2025-07-22T05:59:21.437Z"
+                    },
+                    {
+                        "id": 132,
+                        "company_name": "Sodio Tech",
+                        "subscription_plan_status": "active",
+                        "email": "shy.whippet.gyjs@letterprotect.net",
+                        "full_name": "Letest AI",
+                        "created_at": "2025-07-22T05:59:21.437Z"
+                    },
+                    {
+                        "id": 121,
+                        "company_name": "SS Enterprise",
+                        "subscription_plan_status": "active",
+                        "email": "sandeep@sodio.tech",
+                        "full_name": "Sandeep Chavda",
+                        "created_at": "2025-07-18T03:10:13.031Z"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar",
+                        "created_at": "2025-07-08T15:20:09.405Z"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar",
+                        "created_at": "2025-07-08T15:20:09.405Z"
+                    },
+                    {
+                        "id": 96,
+                        "company_name": "Sodio",
+                        "subscription_plan_status": "active",
+                        "email": "shivam@sodio.tech",
+                        "full_name": "Shivam Nampalliwar",
+                        "created_at": "2025-07-08T15:20:09.405Z"
+                    }
+                ],
+                "pagination": {
+                    "totalItems": 143,
+                    "totalPages": 15,
+                    "currentPage": 1,
+                    "limit": 10,
+                    "hasNextPage": true,
+                    "hasPreviousPage": false
+                }
+            }
+        }
+      '''
+    }
+  }
+}

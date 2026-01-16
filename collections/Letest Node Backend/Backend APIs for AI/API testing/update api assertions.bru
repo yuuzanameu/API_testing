@@ -1,0 +1,103 @@
+meta {
+  name: update api assertions
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/api/v1/api-testing/api/update-assertions
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "api_id": 622,
+    "test_cases": [
+    {
+      "type": "positive",
+      "request": {
+        "url": "https://jsonplaceholder.typicode.com/posts",
+        "method": "GET",
+        "header": {
+          "Accept": "application/json"
+        },
+        "body": null
+      },
+      "assertion": {
+        "type": "statusCode",
+        "expected": 200
+      }
+    },
+    {
+      "type": "positive",
+      "request": {
+        "url": "https://jsonplaceholder.typicode.com/posts/1",
+        "method": "GET",
+        "header": {
+          "Accept": "application/json"
+        },
+        "body": null
+      },
+      "assertion": {
+        "type": "statusCode",
+        "expected": 200
+      }
+    },
+    {
+      "type": "positive",
+      "request": {
+        "url": "https://jsonplaceholder.typicode.com/posts",
+        "method": "POST",
+        "header": {
+          "Content-Type": "application/json"
+        },
+        "body": "{ \"title\": \"foo\", \"body\": \"bar\", \"userId\": 1 }"
+      },
+      "assertion": {
+        "type": "statusCode",
+        "expected": 201
+      }
+    },
+    {
+      "type": "positive",
+      "request": {
+        "url": "https://api.github.com",
+        "method": "GET",
+        "header": {
+          "Accept": "application/vnd.github.v3+json"
+        },
+        "body": null
+      },
+      "assertion": {
+        "type": "statusCode",
+        "expected": 200
+      }
+    },
+    {
+      "type": "positive",
+      "request": {
+        "url": "https://catfact.ninja/fact",
+        "method": "GET",
+        "header": {
+          "Accept": "application/json"
+        },
+        "body": null
+      },
+      "assertion": {
+        "type": "statusCode",
+        "expected": 200
+      }
+    }
+  ]
+  
+  }
+}
+
+settings {
+  encodeUrl: true
+}

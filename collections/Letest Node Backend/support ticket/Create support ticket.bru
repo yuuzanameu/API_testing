@@ -1,0 +1,26 @@
+meta {
+  name: Create support ticket
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/api/v1/support-ticket
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  feature_image: @file(vNwaC5Hpx/WhatsApp Image 2025-04-28 at 7.13.28 PM.jpeg)
+  title: Login not working
+  category: Authentication
+  description: Cannot access account
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,1111 @@
+meta {
+  name: strategist results
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/api/v1/api-testing/strategist-results
+  body: json
+  auth: none
+}
+
+headers {
+  X-Timestamp: {{timestamp}}
+  X-Signature: {{signature}}
+}
+
+body:json {
+  {
+      "type": "results_ready",
+      "analysis_id": "9632fb82-0af4-4b57-8d50-76e78016dcc5",
+      "session_id": "118ddbdb-17a2-4e4d-9091-e81ead87c953",
+      "data": {
+          "collection_id": "15",
+          "user_id": 99,
+          "total_endpoints": 19,
+          "total_test_cases": 38,
+          "base_url": "http://localhost",
+          "endpoints": {
+              "1697": {
+                  "method": "PUT",
+                  "path": "/v2/pet",
+                  "dependency": [
+                      "1702"
+                  ],
+                  "positive_test_case": {
+                      "description": "Update an existing pet with all required parameters",
+                      "headers": [
+                          {
+                              "Authorization": "Bearer <token>"
+                          }
+                      ],
+                      "payload": {
+                          "id": 10,
+                          "name": "doggie",
+                          "tags": [
+                              {
+                                  "id": 1,
+                                  "name": "tag1"
+                              }
+                          ],
+                          "status": "available",
+                          "category": {
+                              "id": 1,
+                              "name": "Dogs"
+                          },
+                          "photoUrls": [
+                              "url1",
+                              "url2"
+                          ]
+                      },
+                      "query_params": {},
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to update an existing pet without providing the ID parameter",
+                      "headers": [
+                          {
+                              "Authorization": "Bearer <context:endpoint_11:response:body:data:token>"
+                          }
+                      ],
+                      "payload": null,
+                      "query_params": {
+                          "name": "doggie",
+                          "photoUrls": [
+                              "url1",
+                              "url2"
+                          ]
+                      },
+                      "expected_code": "400"
+                  }
+              },
+              "1698": {
+                  "method": "GET",
+                  "path": "/v2/pet/findByStatus",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Retrieve pets that are available",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {
+                          "status": "available"
+                      },
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to check response when status parameter is missing",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "400"
+                  }
+              },
+              "1699": {
+                  "method": "GET",
+                  "path": "/v2/pet/findByTags",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Retrieve pets based on provided tags",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {
+                          "tags": [
+                              "small",
+                              "furry"
+                          ]
+                      },
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to validate response when tags parameter is missing",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "400"
+                  }
+              },
+              "1702": {
+                  "method": "GET",
+                  "path": "/v2/pet/%7BpetId%7D",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Retrieve pet information using a valid pet ID",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to simulate missing petId parameter",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "400"
+                  }
+              },
+              "1703": {
+                  "method": "POST",
+                  "path": "/v2/pet/%7BpetId%7D/uploadImage",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Uploads an image with valid petId and additionalMetadata",
+                      "headers": [
+                          {
+                              "Authorization": "Bearer <token>"
+                          }
+                      ],
+                      "payload": null,
+                      "query_params": {
+                          "petId": 12345,
+                          "additionalMetadata": "some metadata"
+                      },
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to upload an image without providing the petId parameter",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {
+                          "additionalMetadata": "example metadata"
+                      },
+                      "expected_code": "400"
+                  }
+              },
+              "1704": {
+                  "method": "GET",
+                  "path": "/v2/store/inventory",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Retrieve pet inventories by status",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Attempting to get pet inventories without providing the status parameter",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "400"
+                  }
+              },
+              "1705": {
+                  "method": "POST",
+                  "path": "/v2/store/order",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Place an order for a pet with all required parameters",
+                      "headers": [
+                          {
+                              "Authorization": "Bearer <token>"
+                          }
+                      ],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to place an order without providing petId",
+                      "headers": [],
+                      "payload": {
+                          "status": "placed",
+                          "complete": true,
+                          "quantity": 5,
+                          "shipDate": "2022-01-01T12:00:00Z"
+                      },
+                      "query_params": {},
+                      "expected_code": "400"
+                  }
+              },
+              "1707": {
+                  "method": "GET",
+                  "path": "/v2/store/order/%7BorderId%7D",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Retrieve a purchase order with a valid order ID",
+                      "headers": [
+                          {
+                              "Authorization": "Bearer token"
+                          }
+                      ],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to simulate missing orderId parameter",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "400"
+                  }
+              },
+              "1708": {
+                  "method": "POST",
+                  "path": "/v2/user",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Create a new user with valid data",
+                      "headers": [
+                          {
+                              "Authorization": "Bearer <token>"
+                          }
+                      ],
+                      "payload": {
+                          "id": 10,
+                          "email": "john@email.com",
+                          "phone": "12345",
+                          "lastName": "James",
+                          "password": "12345",
+                          "username": "theUser",
+                          "firstName": "John",
+                          "userStatus": 1
+                      },
+                      "query_params": {},
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to create user without providing email",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {
+                          "phone": "12345",
+                          "lastName": "James",
+                          "password": "12345",
+                          "username": "theUser",
+                          "firstName": "John",
+                          "userStatus": 1
+                      },
+                      "expected_code": "400"
+                  }
+              },
+              "1709": {
+                  "method": "POST",
+                  "path": "/v2/user/createWithList",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Test creating a list of users with valid input array",
+                      "headers": [
+                          {
+                              "Authorization": "Bearer token"
+                          }
+                      ],
+                      "payload": {
+                          "users": [
+                              {
+                                  "id": 10,
+                                  "email": "john@email.com",
+                                  "phone": "12345",
+                                  "lastName": "James",
+                                  "password": "12345",
+                                  "username": "theUser",
+                                  "firstName": "John",
+                                  "userStatus": 1
+                              },
+                              {
+                                  "id": 11,
+                                  "email": "jane@email.com",
+                                  "phone": "54321",
+                                  "lastName": "Doe",
+                                  "password": "54321",
+                                  "username": "janeDoe",
+                                  "firstName": "Jane",
+                                  "userStatus": 1
+                              }
+                          ]
+                      },
+                      "query_params": {},
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to create list of users without providing input array",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "400"
+                  }
+              },
+              "1710": {
+                  "method": "GET",
+                  "path": "/v2/user/login",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Test logging in with correct username and password",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {
+                          "username": "john_doe",
+                          "password": "password123"
+                      },
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to simulate missing username parameter",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {
+                          "password": "testpassword"
+                      },
+                      "expected_code": "400"
+                  }
+              },
+              "1711": {
+                  "method": "GET",
+                  "path": "/v2/user/logout",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Send a valid request to log out the current logged in user session",
+                      "headers": [
+                          {
+                              "Authorization": "Bearer <token>"
+                          }
+                      ],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to check response when Authorization header is missing",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "401"
+                  }
+              },
+              "1714": {
+                  "method": "GET",
+                  "path": "/v2/user/%7Busername%7D",
+                  "dependency": [],
+                  "positive_test_case": {
+                      "description": "Get user by a valid username",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "200"
+                  },
+                  "negative_test_case": {
+                      "description": "Test case to validate behavior when username parameter is missing",
+                      "headers": [],
+                      "payload": null,
+                      "query_params": {},
+                      "expected_code": "400"
+                  }
+              }
+          }
+      },
+      "timestamp": 1764592181123
+  }
+}
+
+script:pre-request {
+  // // const rawBody = pm.request.body.raw
+  // const timestamp = Date.now().toString()
+  // // Create HMAC SHA256 signature
+  // function createHMAC(payload) {
+  //     const message = `${payload}.${timestamp}`;
+  // //     return CryptoJS.HmacSHA256(message, pm.environment.get("AI_KEY")).toString();
+  // }
+  
+  // const signature = createHMAC(rawBody);
+  
+  // console.log(rawBody)
+  // // Save values into variables for request usage
+  // // pm.variables.set("signature", signature);
+  // // pm.variables.set("timestamp", timestamp);
+  
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: success
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/strategist-results
+    method: POST
+    mode: json
+    headers: {
+      X-Timestamp: {{timestamp}}
+      X-Signature: {{signature}}
+    }
+  
+    body:json: {
+      {
+        "collection_id": "1",
+        "user_id": "1",
+        "base_url": "https://qa-automator-staging.letest.ai",
+        "endpoints": {
+          "4": {
+            "method": "POST",
+            "path": "/load-benchmarking_combined",
+            "dependency": ["5"],
+            "positive_test_case": {
+              "description": "load combined benchmarking data with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_combined.csv"
+              },
+              "expected_code": "200"
+            },
+            "negative_test_case": {
+              "description": "test case to check response when s3_bucket parameter is missing",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_key": "benchmarking_combined.csv"
+              },
+              "expected_code": "400"
+            },
+            "edge_case": {
+              "description": "valid request with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_combined.csv"
+              },
+              "expected_code": "200"
+            },
+            "security_test_case": {
+              "description": "valid test case with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_combined.csv"
+              },
+              "expected_code": "200"
+            }
+          },
+          "5": {
+            "method": "POST",
+            "path": "/load-benchmarking_region",
+            "dependency": ["7"],
+            "positive_test_case": {
+              "description": "testing the successful loading of region-specific benchmarking data from s3",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_region.csv"
+              },
+              "expected_code": "200"
+            },
+            "negative_test_case": {
+              "description": "test case to simulate missing s3_bucket parameter",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_key": "benchmarking_region.csv"
+              },
+              "expected_code": "400"
+            },
+            "edge_case": {
+              "description": "sending request with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_region.csv"
+              },
+              "expected_code": "200"
+            },
+            "security_test_case": {
+              "description": "load benchmarking data for a region with default s3 bucket and key",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_region.csv"
+              },
+              "expected_code": "200"
+            }
+          },
+          "8": {
+            "method": "POST",
+            "path": "/load-benchmarking_age",
+            "dependency": ["9"],
+            "positive_test_case": {
+              "description": "load age benchmarking data using default s3 bucket and key",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_age.csv"
+              },
+              "expected_code": "200"
+            },
+            "negative_test_case": {
+              "description": "test case to check response when s3_bucket parameter is missing",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_key": "benchmarking_age.csv"
+              },
+              "expected_code": "400"
+            },
+            "edge_case": {
+              "description": "load age benchmarking data with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_age.csv"
+              },
+              "expected_code": "200"
+            },
+            "security_test_case": {
+              "description": "valid request with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_age.csv"
+              },
+              "expected_code": "200"
+            }
+          },
+          "10": {
+            "method": "POST",
+            "path": "/load-benchmarking_income",
+            "dependency": ["11"],
+            "positive_test_case": {
+              "description": "testing with valid input parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_income.csv"
+              },
+              "expected_code": "200"
+            },
+            "negative_test_case": {
+              "description": "test case to check response when s3_bucket parameter is missing",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_key": "benchmarking_income.csv"
+              },
+              "expected_code": "400"
+            },
+            "edge_case": {
+              "description": "load income benchmarking data with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_income.csv"
+              },
+              "expected_code": "200"
+            },
+            "security_test_case": {
+              "description": "valid request with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_income.csv"
+              },
+              "expected_code": "200"
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 69
+      ETag: W/"45-7q9glX+JAVej0w8/g6ClwY8nSig"
+      Date: Thu, 06 Nov 2025 02:58:11 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "strategist results processed",
+            "data": true
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: example input for strategist
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/strategist-results
+    method: POST
+    mode: json
+    headers: {
+      X-Timestamp: {{timestamp}}
+      X-Signature: {{signature}}
+    }
+  
+    body:json: {
+      {
+        "collection_id": "1",
+        "user_id": "1",
+        "base_url": "https://qa-automator-staging.letest.ai",
+        "endpoints": {
+          "4": {
+            "method": "POST",
+            "path": "/load-benchmarking_combined",
+            "dependency": ["5"],
+            "positive_test_case": {
+              "description": "load combined benchmarking data with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_combined.csv"
+              },
+              "expected_code": "200"
+            },
+            "negative_test_case": {
+              "description": "test case to check response when s3_bucket parameter is missing",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_key": "benchmarking_combined.csv"
+              },
+              "expected_code": "400"
+            },
+            "edge_case": {
+              "description": "valid request with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_combined.csv"
+              },
+              "expected_code": "200"
+            },
+            "security_test_case": {
+              "description": "valid test case with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_combined.csv"
+              },
+              "expected_code": "200"
+            }
+          },
+          "5": {
+            "method": "POST",
+            "path": "/load-benchmarking_region",
+            "dependency": ["7"],
+            "positive_test_case": {
+              "description": "testing the successful loading of region-specific benchmarking data from s3",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_region.csv"
+              },
+              "expected_code": "200"
+            },
+            "negative_test_case": {
+              "description": "test case to simulate missing s3_bucket parameter",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_key": "benchmarking_region.csv"
+              },
+              "expected_code": "400"
+            },
+            "edge_case": {
+              "description": "sending request with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_region.csv"
+              },
+              "expected_code": "200"
+            },
+            "security_test_case": {
+              "description": "load benchmarking data for a region with default s3 bucket and key",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_region.csv"
+              },
+              "expected_code": "200"
+            }
+          },
+          "8": {
+            "method": "POST",
+            "path": "/load-benchmarking_age",
+            "dependency": ["9"],
+            "positive_test_case": {
+              "description": "load age benchmarking data using default s3 bucket and key",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_age.csv"
+              },
+              "expected_code": "200"
+            },
+            "negative_test_case": {
+              "description": "test case to check response when s3_bucket parameter is missing",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_key": "benchmarking_age.csv"
+              },
+              "expected_code": "400"
+            },
+            "edge_case": {
+              "description": "load age benchmarking data with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_age.csv"
+              },
+              "expected_code": "200"
+            },
+            "security_test_case": {
+              "description": "valid request with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_age.csv"
+              },
+              "expected_code": "200"
+            }
+          },
+          "10": {
+            "method": "POST",
+            "path": "/load-benchmarking_income",
+            "dependency": ["11"],
+            "positive_test_case": {
+              "description": "testing with valid input parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_income.csv"
+              },
+              "expected_code": "200"
+            },
+            "negative_test_case": {
+              "description": "test case to check response when s3_bucket parameter is missing",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_key": "benchmarking_income.csv"
+              },
+              "expected_code": "400"
+            },
+            "edge_case": {
+              "description": "load income benchmarking data with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_income.csv"
+              },
+              "expected_code": "200"
+            },
+            "security_test_case": {
+              "description": "valid request with default parameters",
+              "headers": [],
+              "payload": null,
+              "query_params": {
+                "s3_bucket": "aggregated-spend-merchant",
+                "s3_key": "benchmarking_income.csv"
+              },
+              "expected_code": "200"
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 69
+      ETag: W/"45-7q9glX+JAVej0w8/g6ClwY8nSig"
+      Date: Thu, 06 Nov 2025 02:58:11 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "user_id": "99",
+          "collection_id": "17",
+          "host": "https://qa-automator-staging.letest.ai",
+          "basePath": "/api/v1",
+          "schemes": [
+            "http"
+          ],
+          "paths": {
+            "/signin": {
+              "id": 75,
+              "post": {
+                "summary": "sign in",
+                "description": "sign in",
+                "parameters": [],
+                "responses": {
+                  "200": {
+                    "description": "User login successfully"
+                  },
+                  "404": {
+                    "description": "Password is wrong"
+                  },
+                  "500": {
+                    "description": "Internal server error"
+                  }
+                }
+              }
+            },
+            "/profile": {
+              "id": 76,
+              "get": {
+                "summary": "User Profile",
+                "description": "User fetched successfully",
+                "parameters": [],
+                "responses": {
+                  "200": {
+                    "description": "User fetched successfully"
+                  },
+                  "400": {
+                    "description": "Invalid parameters"
+                  },
+                  "500": {
+                    "description": "Internal server error"
+                  }
+                }
+              }
+            },
+            "/project-list": {
+              "id": 317,
+              "post": {
+                "summary": "get project list",
+                "description": "gets all projects of the user",
+                "parameters": [],
+                "responses": {
+                  "200": {
+                    "description": "projects fetched"
+                  },
+                  "500": {
+                    "description": "Internal server error"
+                  }
+                }
+              }
+            },
+            "/:project_id/environments": {
+              "id": 316,
+              "post": {
+                "summary": "fetch environments of given project",
+                "description": "fetch environments of given project",
+                "parameters": [
+                  {
+                    "name": "project_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "description": "project id"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "environments fetched"
+                  },
+                  "500": {
+                    "description": "Internal server error"
+                  }
+                }
+              }
+            },
+            "/categories": {
+              "id": 320,
+              "get": {
+                "summary": "get all categories of environment and given project",
+                "description": "get all categories of environment and given project",
+                "parameters": [
+                  {
+                    "name": "project_id",
+                    "in": "query",
+                    "required": true,
+                    "type": "string",
+                    "description": "project id"
+                  },
+                  {
+                    "name": "environment_id",
+                    "in": "query",
+                    "required": true,
+                    "type": "string",
+                    "description": "environment id"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "categories fetched"
+                  },
+                  "400": {
+                    "description": "Invalid parameters"
+                  },
+                  "500": {
+                    "description": "Internal server error"
+                  }
+                }
+              }
+            },
+            "category/:category_id/test-cases": {
+              "id": 318,
+              "get": {
+                "summary": "gets all test cases of given category",
+                "description": "gets all test cases of given category",
+                "parameters": [
+                  {
+                    "name": "category_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string",
+                    "description": "category id"
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Categories retrieved successfully",
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "500": {
+                    "description": "Internal server error"
+                  }
+                }
+              },
+              "/test-cases": {
+                "id": 319,
+                "get": {
+                  "summary": "get all test cases",
+                  "description": "gets all test cases",
+                  "responses": {
+                    "200": {
+                      "description": "test cases fetched",
+                      "schema" : {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "category_id": {
+                              "type": "number"
+                            },
+                            "project_id": {
+                              "type": "number"
+                            },
+                            "environment_id": {
+                              "type": "number"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "steps" : {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "test_case_step_id": {
+                                    "type": "number"
+                                  },
+                                  "steps": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "500": {
+                      "description": "Internal server error"
+                    }
+                  } 
+                }
+              },
+            }
+          },
+          "securityDefinitions": {
+            "bearerAuth": {
+              "type": "bearer",
+              "name": "Authorization",
+              "in": "header",
+              "description": "Bearer token for authentication"
+            }
+          }
+        }
+      '''
+    }
+  }
+}

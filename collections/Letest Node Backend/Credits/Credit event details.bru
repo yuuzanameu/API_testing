@@ -1,0 +1,53 @@
+meta {
+  name: Credit event details
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{URL}}/api/v1/credits/:event_id/details
+  body: text
+  auth: bearer
+}
+
+params:path {
+  event_id: 2
+}
+
+headers {
+  X-Timestamp: {{timestamp}}
+  X-Signature: {{signature}}
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  ``` json
+  {
+      "success": true,
+      "message": "fetched credit event's details",
+      "data": {
+          "user_id": 2,
+          "event_id": 1,
+          "event_name": "asas",
+          "details": {
+              "ai_steps": [
+                  "Enter username blah blah",
+                  "Enter password blah blah",
+                  "Enter username blah blah",
+                  "Enter password blah blah",
+                  "Enter username blah blah",
+                  "Enter password blah blah"
+              ]
+          }
+      }
+  }
+  
+   ```
+}

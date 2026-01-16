@@ -1,0 +1,23 @@
+meta {
+  name: Delete test case(s)
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{URL}}/api/v1/test-cases/:test_case_id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  test_case_id: 1904
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

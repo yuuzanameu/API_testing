@@ -1,0 +1,93 @@
+meta {
+  name: All collections
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{URL}}/api/v1/api-testing/collections
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+example {
+  name: All collections
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/collections
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 255
+      ETag: W/"ff-0lRtwBWv17YtOjTG92c7nNhMIFE"
+      Date: Thu, 18 Sep 2025 03:39:22 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "collections_retrieved",
+            "data": {
+                "collections": [
+                    {
+                        "id": 383,
+                        "name": "New Name Backend"
+                    },
+                    {
+                        "id": 509,
+                        "name": "Swagger Petstore"
+                    },
+                    {
+                        "id": 516,
+                        "name": "Swagger Petstore"
+                    },
+                    {
+                        "id": 523,
+                        "name": "New Collection"
+                    },
+                    {
+                        "id": 524,
+                        "name": "Groceries API"
+                    }
+                ]
+            }
+        }
+      '''
+    }
+  }
+}

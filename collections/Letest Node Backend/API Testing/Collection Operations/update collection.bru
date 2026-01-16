@@ -1,0 +1,92 @@
+meta {
+  name: update collection
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{URL}}/api/v1/api-testing/collection/update-collection/:collection_id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  collection_id: 10
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "name": "New effing name"
+      // more properties--we can add and manage in same API later
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/collection/update-collection/:collection_id
+    method: PATCH
+    mode: json
+    params:path: {
+      collection_id: 2
+    }
+  
+    body:json: {
+      {
+          "name": "New effing name"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 89
+      ETag: W/"59-RwrSY+ZnQjoUQo/0+GmJ6sjmSZI"
+      Date: Mon, 22 Sep 2025 05:41:39 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "collection_updated",
+            "data": {
+                "id": 2,
+                "name": "New effing name"
+            }
+        }
+      '''
+    }
+  }
+}

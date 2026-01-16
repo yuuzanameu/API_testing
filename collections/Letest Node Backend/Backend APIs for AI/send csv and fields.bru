@@ -1,0 +1,26 @@
+meta {
+  name: send csv and fields
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{URL}}/api/v1/example-ai-endpoint
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  file: @file(postman-cloud:///1f090cec-2173-4950-8652-c80f9ed1a4e5)
+  category_id: 1
+  environment_id: 1
+  project_id: 2
+}
+
+settings {
+  encodeUrl: true
+}

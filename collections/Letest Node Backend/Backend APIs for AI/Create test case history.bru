@@ -1,0 +1,44 @@
+meta {
+  name: Create test case history
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/api/v1/test-case-history
+  body: json
+  auth: inherit
+}
+
+headers {
+  X-Signature: 165ebe8357bffbdee2cc7fea0d15f43d8d4df411a9d86b20240c0f7b4529280e
+  X-Timestamp: 1756975629571
+}
+
+body:json {
+  {"test_case_id":10162,"execution_status":"failed","execution_start_date":"2025-09-04T08:45:01","execution_end_date":"2025-09-04T08:47:09","duration":"131","logs":"**Test Result : FAILURE**\n\nExecution Details: Started the test to verify the 'START YOUR CHALLENGE' button function. Successfully logged in and navigated to the New Challenge section. However, after clicking 'START YOUR CHALLENGE', the navigation didn't proceed to the expected Evaluation Stages page as outlined in the test's expected outcome. Instead, it directed to a configuration page, significantly deviating from the expected path. As per the critical failure conditions, the navigation failure here marks the test as unsuccessful, fulfilling the failure prompt's immediate reporting protocol. Lastly, no further steps or retries allowed since this key outcome's unmet condition."}
+}
+
+script:post-response {
+  // // Example payload and timestamp
+  // // const normalizedBody = pm.request.body.raw
+  // const timestamp = Date.now().toString();
+  // // Create HMAC SHA256 signature
+  // function createHMAC(payload) {
+  //     const message = `${payload}.${timestamp}`;
+  //     console.log(message)
+  // //     return CryptoJS.HmacSHA256(message, pm.environment.get("AI_KEY")).toString();
+  // }
+  
+  // const signature = createHMAC(normalizedBody);
+  
+  // // Save values into variables for request usage
+  // // pm.variables.set("signature", signature);
+  // // pm.variables.set("timestamp", timestamp);
+  
+  
+}
+
+settings {
+  encodeUrl: true
+}

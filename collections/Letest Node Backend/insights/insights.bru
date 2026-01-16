@@ -1,0 +1,34 @@
+meta {
+  name: insights
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{URL}}/api/v1/insights?environment_id=228&timeframe=this_month
+  body: text
+  auth: bearer
+}
+
+params:query {
+  environment_id: 228
+  timeframe: this_month
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:text {
+  {
+      "full_name" : "test",
+      "company_name":"json",
+      "email" : "ladhianna@gmail.com",
+      "password":"Sherlock@4321",
+      "contact_number" : "8160958620"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

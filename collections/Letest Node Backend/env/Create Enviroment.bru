@@ -1,0 +1,29 @@
+meta {
+  name: Create Enviroment
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{URL}}/api/v1/env
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "project_id":87,
+      "label":"env2",
+      "url" : "http://asd",
+      "username" :"asd",
+      "password" : "asd"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

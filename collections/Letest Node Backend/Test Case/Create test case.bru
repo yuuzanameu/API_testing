@@ -1,0 +1,35 @@
+meta {
+  name: Create test case
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{URL}}/api/v1/test-case
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "category_id": 3,
+    "project_id": 2,
+    "environment_id": 1,
+    "dependancy_id": "",
+    "title": "Click on the 'Forgot password?' and delete yourself",
+    "steps": [
+      "click on the 'Forgot password?' link"
+    ],
+    "expected_outcome": "uupon clicking forgot password user will get a pop up",
+    "status": "draft",
+    "logs": "User is redirected to the 'Reset Password' page where an email address can be entered to initiate password reset. No popup appeared."
+  }
+}
+
+settings {
+  encodeUrl: true
+}

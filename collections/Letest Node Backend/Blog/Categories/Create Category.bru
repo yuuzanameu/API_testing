@@ -1,0 +1,26 @@
+meta {
+  name: Create Category
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{URL}}/api/v1/blog/categories
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "name": "Devops",
+      "description" : ""
+  }
+}
+
+settings {
+  encodeUrl: true
+}

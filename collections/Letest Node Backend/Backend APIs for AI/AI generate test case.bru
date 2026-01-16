@@ -1,0 +1,55 @@
+meta {
+  name: AI generate test case
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{URL}}/api/v1/test-case/ai-generation
+  body: json
+  auth: inherit
+}
+
+headers {
+  X-Signature: {{signature}}
+  X-Timestamp: {{timestamp}}
+}
+
+body:json {
+  {
+    "user_id": 99,
+    "category_id": 546,
+    "project_id": 123,
+    "environment_id": 228,
+    "dependancy_id": "",
+    "title": "Click on the 'Forgot password?' and delete yourself",
+    "steps": [
+      "click on the 'Forgot password?' link"
+    ],
+    "expected_outcome": "uupon clicking forgot password user will get a pop up",
+    "status": "draft"
+  }
+}
+
+script:pre-request {
+  const rawBody = req.getBody().raw
+  const timestamp = Date.now().toString()
+  // Create HMAC SHA256 signature
+  function createHMAC(payload) {
+      const message = `${payload}.${timestamp}`;
+      return CryptoJS.HmacSHA256(message, bru.getEnvVar("AI_KEY")).toString();
+  }
+  
+  const signature = createHMAC(rawBody);
+  
+  console.log(rawBody)
+  // Save values into variables for request usage
+  bru.setVar("signature", signature);
+  bru.setVar("timestamp", `${timestamp}`);
+  
+  
+}
+
+settings {
+  encodeUrl: true
+}

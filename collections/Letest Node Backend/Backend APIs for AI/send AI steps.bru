@@ -1,0 +1,197 @@
+meta {
+  name: send AI steps
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{URL}}/api/v1/test-cases/ai-steps
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "user_id": 99,
+      "project_id": 83,
+      "environment_id": 268,
+      "category_id": 651,
+      "total_objects": 4,
+      "data": [
+          {
+              "test_title": "to verify if the dashboard page loads successfully upon login.",
+              "steps": [
+                  "open the twitter ",
+                  "observe the peepyhole."
+              ],
+              "expected_outcome": "the dashboard page should load successfully, displaying all widgets and data."
+          },
+          {
+              "test_title": "to verify \"webpage error 404\" occurs.",
+              "steps": [
+                  "open the goddamn code",
+                  "enter the invalid link or extra characters in the valid link."
+              ],
+              "expected_outcome": "window should show an \"webpage error\" message to user when the link is invali or incorrect."
+          }
+      ]
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Local save
+  
+  request: {
+    url: {{URL}}/api/v1/test-cases/ai-steps
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "user_id": 1,
+          "project_id": 1,
+          "environment_id": 1,
+          "category_id": 1,
+          "total_objects": 4,
+          "data": [
+              {
+                  "test_title": "to verify if the dashboard page loads successfully upon login.",
+                  "steps": [
+                      "open the fucking twitter hell yeah",
+                      "observe the peepyhole."
+                  ],
+                  "expected_outcome": "the dashboard page should load successfully, displaying all widgets and data."
+              },
+              {
+                  "test_title": "to verify \"webpage error 404\" occurs.",
+                  "steps": [
+                      "open the goddamn code",
+                      "enter the invalid link or extra characters in the valid link."
+                  ],
+                  "expected_outcome": "window should show an \"webpage error\" message to user when the link is invali or incorrect."
+              }
+          ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 59
+      ETag: W/"3b-IIHsjZZMUssu/4UGCWNMGjzx0zA"
+      Date: Mon, 06 Oct 2025 09:49:12 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: Created
+      text: 201
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "test_cases_created",
+            "data": true
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Staging acc save
+  
+  request: {
+    url: {{URL}}/api/v1/test-cases/ai-steps
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "user_id": 99,
+          "project_id": 83,
+          "environment_id": 268,
+          "category_id": 651,
+          "total_objects": 4,
+          "data": [
+              {
+                  "test_title": "to verify if the dashboard page loads successfully upon login.",
+                  "steps": [
+                      "open the fucking twitter hell yeah",
+                      "observe the peepyhole."
+                  ],
+                  "expected_outcome": "the dashboard page should load successfully, displaying all widgets and data."
+              },
+              {
+                  "test_title": "to verify \"webpage error 404\" occurs.",
+                  "steps": [
+                      "open the goddamn code",
+                      "enter the invalid link or extra characters in the valid link."
+                  ],
+                  "expected_outcome": "window should show an \"webpage error\" message to user when the link is invali or incorrect."
+              }
+          ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Server: nginx
+      Date: Mon, 06 Oct 2025 09:54:37 GMT
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 59
+      Connection: keep-alive
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      ETag: W/"3b-IIHsjZZMUssu/4UGCWNMGjzx0zA"
+    }
+  
+    status: {
+      code: Created
+      text: 201
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "test_cases_created",
+            "data": true
+        }
+      '''
+    }
+  }
+}

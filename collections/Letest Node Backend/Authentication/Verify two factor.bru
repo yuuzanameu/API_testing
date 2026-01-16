@@ -1,0 +1,80 @@
+meta {
+  name: Verify two factor
+  type: http
+  seq: 13
+}
+
+post {
+  url: {{URL}}/api/v1/verify-2fa
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "two_factor_code": "564984",
+      "user_id": 201
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Verify two factor
+  
+  request: {
+    url: {{URL}}/api/v1/verify-2fa
+    method: POST
+    mode: json
+    body:json: {
+      {
+          "two_factor_code": "859429"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 274
+      ETag: W/"112-RsDhJ84or4QUQrlbdUio8aoZnHg"
+      Date: Tue, 14 Oct 2025 05:28:16 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "2fa_verified",
+            "data": {
+                "verified": true,
+                "token": "{{vault:json-web-token}}"
+            }
+        }
+      '''
+    }
+  }
+}

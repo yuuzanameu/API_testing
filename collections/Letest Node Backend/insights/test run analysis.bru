@@ -1,0 +1,24 @@
+meta {
+  name: test run analysis
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{URL}}/api/v1/insights/test_run_analysis?environment_id=1&timeframe=this_week
+  body: none
+  auth: bearer
+}
+
+params:query {
+  environment_id: 1
+  timeframe: this_week
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

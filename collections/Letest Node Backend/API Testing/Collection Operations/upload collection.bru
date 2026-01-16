@@ -1,0 +1,45 @@
+meta {
+  name: upload collection
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{URL}}/api/v1/api-testing/collection/upload-collection
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  file: @file(/home/vladi/Postman/files/clever.json)
+  ~spec_type: swaggerv2file
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  ``` json
+  {
+      "success": true,
+      "message": "collection_file_parsed",
+      "data": {
+          "id": 72,
+          "user_id": 1,
+          "name": "Simple API overview",
+          "parent_id": null,
+          "type": "collection",
+          "api_properties": null,
+          "order_position": null,
+          "created_at": "2025-09-16T09:42:38.532Z",
+          "updated_at": "2025-09-16T09:42:38.532Z"
+      }
+  }
+  
+   ```
+}

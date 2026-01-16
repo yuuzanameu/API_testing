@@ -1,0 +1,25 @@
+meta {
+  name: Update Test Step
+  type: http
+  seq: 12
+}
+
+put {
+  url: {{URL}}/api/v1/test-steps/10
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "step" : "1. Username as \"siddharthray47@gmail.com\""
+  }
+}
+
+settings {
+  encodeUrl: true
+}

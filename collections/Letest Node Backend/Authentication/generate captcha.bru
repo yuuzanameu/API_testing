@@ -1,0 +1,73 @@
+meta {
+  name: generate captcha
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{URL}}/api/v1/generate-captcha
+  body: text
+  auth: none
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: New Request
+  
+  request: {
+    url: {{URL}}/api/v1/generate-captcha
+    method: GET
+    mode: text
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 300
+      ETag: W/"12c-Id3Hhqi8vEMTzV4YEjfPH0USK9o"
+      Date: Thu, 09 Oct 2025 05:49:19 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "captcha_generated",
+            "data": {
+                "captcha": {
+                    "algorithm": "SHA-256",
+                    "challenge": "124d4b5cc60ea81bab63573a13f2e868a83e52947d4484fe38d9c9a0fd68a413",
+                    "maxnumber": 100000,
+                    "salt": "59b4e9f895cced18d2cf1af9",
+                    "signature": "2376c12ca2f8041cf7b024be17c06290eda8486fc474700d92662507f294c3d7"
+                }
+            }
+        }
+      '''
+    }
+  }
+}

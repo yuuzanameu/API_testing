@@ -1,0 +1,46 @@
+meta {
+  name: Create Environments
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{URL}}/api/v1/env
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+  "project_id" : "2",
+  "environments" : [
+                          {
+                              "label" : "rrrrr",
+                              "url" : "http://google.com"
+                          },
+                          {
+                              "label" : "rrrrrtttyyyyyy",
+                              "url" : "http://google.com"
+                          }
+                      ]
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  ```
+  {
+  	"success": true,
+  	"message": "environment_created",
+  	"data": []
+  }
+  
+   ```
+}

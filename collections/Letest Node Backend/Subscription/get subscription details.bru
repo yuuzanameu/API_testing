@@ -1,0 +1,23 @@
+meta {
+  name: get subscription details
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{URL}}/api/v1/subscription/details
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  get a detailed summary of all the balances from different sources (topups, rollovers, base plan)
+}

@@ -1,0 +1,26 @@
+meta {
+  name: Get Blog Detail
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{URL}}/api/v1/blogs/10
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  we can use id or slug  
+  {{URL}}/api/v1/blogs/5
+  
+  {{URL}}/api/v1/blogs/rr
+}

@@ -1,0 +1,38 @@
+meta {
+  name: Admin dashboard
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{URL}}/api/v1/admin/dashboard
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  This endpoint is protected and can only be interacted with after the admin succesfully signs in and recieves an authorization jwt token (you can recieve this through signup as well, read signup endpoint) which needs to be sent with every req.  
+  the payload you'll recieve:
+  
+  ```
+  {
+  totalUsers: number,
+  totalPayingUsers: number,
+  totalTestCases: number,
+  monthlyRecurringRevenue: number,
+  annualRecurringRevenue: number,
+  avgRealTimeRun: string,
+  avgBackgroundRun: string,
+  testCaseIssuesResolved: number
+  }
+  
+   ```
+}

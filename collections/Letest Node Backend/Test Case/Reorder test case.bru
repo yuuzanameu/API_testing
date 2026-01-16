@@ -1,0 +1,27 @@
+meta {
+  name: Reorder test case
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/api/v1/test-case/3/reorder
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "category_id": 3,
+      "prev": 1,
+      "next": -1
+  }
+}
+
+settings {
+  encodeUrl: true
+}

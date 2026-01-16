@@ -1,0 +1,30 @@
+meta {
+  name: Admin signin Copy
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{URL}}/api/v1/admin/signin
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "email" : "aasas@gmail.com",
+      "password" : "Sherlock@1234"
+  }
+  
+  
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Good ol signin endpoint, just provide email and password and you'll be returned a jwt token with the payload: {email, id, iat, exp} and also a JSON of the form: {email, id, token} where token is just the jwt token.
+  
+  Thanks.
+}

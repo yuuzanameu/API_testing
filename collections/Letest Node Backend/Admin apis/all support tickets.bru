@@ -1,0 +1,297 @@
+meta {
+  name: all support tickets
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{URL}}/api/v1/admin/support-tickets
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~status: closed
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: no filters
+  
+  request: {
+    url: {{URL}}/api/v1/admin/support-tickets
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 1851
+      ETag: W/"73b-ucQi8HSw1xnWlSJa20tybKkuGg0"
+      Date: Wed, 08 Oct 2025 12:04:51 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "support_tickets_found",
+            "data": {
+                "supportTickets": [
+                    {
+                        "id": 18,
+                        "title": "Testing Issue",
+                        "category": "Account & Access Issues",
+                        "description": "sdfghjk",
+                        "attachment": "support_ticket/1755089539962-Screenshot (98).png",
+                        "created_at": "2025-08-13T12:52:20.162Z",
+                        "user_id": 161,
+                        "status": "open"
+                    },
+                    {
+                        "id": 17,
+                        "title": "Hello",
+                        "category": "Platform Bugs & Performance",
+                        "description": "hjdjfds",
+                        "attachment": "support_ticket/1754979747310-Screenshot (3025).png",
+                        "created_at": "2025-08-12T06:22:27.438Z",
+                        "user_id": 135,
+                        "status": "open"
+                    },
+                    {
+                        "id": 16,
+                        "title": "Test",
+                        "category": "Test Execution & Automation",
+                        "description": "Working fine",
+                        "attachment": "support_ticket/1754979679791-Screenshot (3025).png",
+                        "created_at": "2025-08-12T06:21:19.962Z",
+                        "user_id": 135,
+                        "status": "open"
+                    },
+                    {
+                        "id": 15,
+                        "title": "blah sa sa",
+                        "category": "Billing & Subscription",
+                        "description": "some billing issue i think hekome out",
+                        "attachment": "support_ticket/1754914443048-xdg_menu_fix.txt",
+                        "created_at": "2025-08-11T12:14:03.209Z",
+                        "user_id": 99,
+                        "status": "open"
+                    },
+                    {
+                        "id": 14,
+                        "title": "Testing automation Issue",
+                        "category": "Test Execution & Automation",
+                        "description": "Testing automation is not working properly and hallucinating",
+                        "attachment": "support_ticket/1754901631858-Screenshot (99).png",
+                        "created_at": "2025-08-11T08:40:32.026Z",
+                        "user_id": 145,
+                        "status": "open"
+                    },
+                    {
+                        "id": 13,
+                        "title": "testing",
+                        "category": "Platform Bugs & Performance",
+                        "description": "testing support ticket working",
+                        "attachment": "support_ticket/1754640361449-Screenshot (98).png",
+                        "created_at": "2025-08-08T08:06:01.622Z",
+                        "user_id": 135,
+                        "status": "open"
+                    },
+                    {
+                        "id": 12,
+                        "title": "Test",
+                        "category": "Feedback & Feature Requests",
+                        "description": "Testing",
+                        "attachment": "support_ticket/1753329872804-Screenshot (2848).png",
+                        "created_at": "2025-07-24T04:04:33.272Z",
+                        "user_id": 135,
+                        "status": "closed"
+                    }
+                ],
+                "pagination": {
+                    "total": 7,
+                    "page": 1,
+                    "limit": 10,
+                    "totalPages": 1
+                }
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: status=closed, open
+  
+  request: {
+    url: {{URL}}/api/v1/admin/support-tickets?status=closed
+    method: GET
+    mode: none
+    params:query: {
+      status: closed
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 366
+      ETag: W/"16e-HVZ7wZ/U9XokzMXtNa2l0OSbP+k"
+      Date: Wed, 08 Oct 2025 12:12:37 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "support_tickets_found",
+            "data": {
+                "supportTickets": [
+                    {
+                        "id": 12,
+                        "title": "Test",
+                        "category": "Feedback & Feature Requests",
+                        "description": "Testing",
+                        "attachment": "support_ticket/1753329872804-Screenshot (2848).png",
+                        "created_at": "2025-07-24T04:04:33.272Z",
+                        "user_id": 135,
+                        "status": "closed"
+                    }
+                ],
+                "pagination": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10,
+                    "totalPages": 1
+                }
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: search_text
+  
+  request: {
+    url: {{URL}}/api/v1/admin/support-tickets?search_text=hekome
+    method: GET
+    mode: none
+    params:query: {
+      ~status: closed
+      search_text: hekome
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 389
+      ETag: W/"185-lXeNxcLunhELR1r3bocIAbp1Z4w"
+      Date: Wed, 08 Oct 2025 12:13:30 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "support_tickets_found",
+            "data": {
+                "supportTickets": [
+                    {
+                        "id": 15,
+                        "title": "blah sa sa",
+                        "category": "Billing & Subscription",
+                        "description": "some billing issue i think hekome out",
+                        "attachment": "support_ticket/1754914443048-xdg_menu_fix.txt",
+                        "created_at": "2025-08-11T12:14:03.209Z",
+                        "user_id": 99,
+                        "status": "open"
+                    }
+                ],
+                "pagination": {
+                    "total": 1,
+                    "page": 1,
+                    "limit": 10,
+                    "totalPages": 1
+                }
+            }
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Delete test step
+  type: http
+  seq: 13
+}
+
+delete {
+  url: {{URL}}/api/v1/test-steps/:step_id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  step_id: 137
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

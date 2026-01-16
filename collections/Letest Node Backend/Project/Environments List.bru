@@ -1,0 +1,23 @@
+meta {
+  name: Environments List
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{URL}}/api/v1/:project_id/environments
+  body: none
+  auth: bearer
+}
+
+params:path {
+  project_id: 83
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

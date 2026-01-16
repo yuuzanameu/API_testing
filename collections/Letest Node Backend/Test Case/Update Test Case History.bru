@@ -1,0 +1,29 @@
+meta {
+  name: Update Test Case History
+  type: http
+  seq: 11
+}
+
+put {
+  url: {{URL}}/api/v1/test-case-history/:history_id
+  body: json
+  auth: none
+}
+
+params:path {
+  history_id: 3
+}
+
+body:json {
+  {
+      "test_case_id" : 50,
+      "execution_status":"failed", //inprogress,pending,passed,failed
+      "execution_end_date" : "2025-06-01 12:00:00",
+      "duration" : "11",
+      "logs" : ""
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,27 @@
+meta {
+  name: Create Subscription
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{URL}}/api/v1/subscription/create?plan_id=P-08C918797M0737451NEWT2UY
+  body: json
+  auth: bearer
+}
+
+params:query {
+  plan_id: P-08C918797M0737451NEWT2UY
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  this api takes a plan id and provides a payment approval link to the frontend which the user would be redirected to to make the payment.
+}

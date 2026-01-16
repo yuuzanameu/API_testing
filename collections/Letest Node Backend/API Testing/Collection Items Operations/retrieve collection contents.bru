@@ -1,0 +1,354 @@
+meta {
+  name: retrieve collection contents
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{URL}}/api/v1/api-testing/collection/:collection_id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  collection_id: 30
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: retrieve collection items
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/collection/:collection_id
+    method: GET
+    mode: none
+    params:path: {
+      collection_id: 2
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 7056
+      ETag: W/"1b90-zrSI6wtf+oEO8UFvoHohiT5dw2c"
+      Date: Mon, 22 Sep 2025 04:18:36 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "collection_contents_retrieved",
+            "data": {
+                "items": [
+                    {
+                        "id": 22,
+                        "name": "Create Category Copy",
+                        "type": "api",
+                        "parent_id": 15,
+                        "api_properties": {
+                            "request": {
+                                "url": "{{URL}}/api/v1/categories",
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": {
+                                        "token": "{{token}}"
+                                    }
+                                },
+                                "body": {
+                                    "raw": "{\r\n    \"project_id\" : \"83\",\r\n    \"environment_id\" : 228,\r\n    \"name\" : \"New Cateogry\",\r\n    \"description\" : \"just a new category\" // optional \r\n}",
+                                    "mode": "raw",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "header": [],
+                                "method": "POST"
+                            },
+                            "response": []
+                        }
+                    },
+                    {
+                        "id": 18,
+                        "name": "Create Project Copy",
+                        "type": "api",
+                        "parent_id": 14,
+                        "api_properties": {
+                            "request": {
+                                "url": "{{URL}}/api/v1/projects",
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": {
+                                        "token": "{{token}}"
+                                    }
+                                },
+                                "body": {
+                                    "raw": "{\r\n    \"name\" : \"Propmodel\",\r\n    \"description\": \"test\",\r\n    \"environments\" : [\r\n                        {\r\n                            \"label\" : \"production\",\r\n                            \"url\" : \"https://demo.propmodel.com\"\r\n                        }\r\n                    ]\r\n\r\n}",
+                                    "mode": "raw",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "header": [],
+                                "method": "POST",
+                                "description": "``` json\n{\n\t\"success\": true,\n\t\"message\": \"project_created\",\n\t\"data\": {\n\t\t\"id\": 2,\n\t\t\"name\": \"Propmodel\",\n\t\t\"description\": \"test\",\n\t\t\"user_id\": 1,\n\t\t\"created_at\": \"2025-09-09T06:20:25.684Z\",\n\t\t\"updated_at\": \"2025-09-09T06:20:25.684Z\",\n\t\t\"environment_id\": 2\n\t}\n}\n\n ```"
+                            },
+                            "response": []
+                        }
+                    },
+                    {
+                        "id": 13,
+                        "name": "Authentication",
+                        "type": "folder",
+                        "parent_id": null,
+                        "api_properties": null
+                    },
+                    {
+                        "id": 16,
+                        "name": "Signin Copy",
+                        "type": "api",
+                        "parent_id": 13,
+                        "api_properties": {
+                            "request": {
+                                "url": "{{URL}}/api/v1/signin",
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": {
+                                        "token": "{{token}}"
+                                    }
+                                },
+                                "body": {
+                                    "raw": "{\r\n    // \"email\" : \"kosij57410@namestal.com\",\r\n    // \"password\":\"Sherlock@4321\"\r\n    \"email\": \"bokugavladi@proton.me\",\r\n    \"password\": \"Password@1772\"\r\n    // \"email\": \"shivam@sodio.tech\",\r\n    // \"password\": \"Letest@123!\"\r\n    // \"email\": \"nobita@personal.example.com\",\r\n    // \"password\": \"Sherlock@4321\"\r\n    // \"email\": \"siddharth@sodio.tech\",\r\n    // \"password\": \"Sid@123456\"\r\n    // \"email\": \"novohe2989@noidem.com\",\r\n    // \"password\":\"Sherlock@4321\" \r\n//     dead.baboon.neeq@rapidletter.net\r\n// Letest@123\r\n}",
+                                    "mode": "raw",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "header": [],
+                                "method": "POST",
+                                "description": "I can set up some basic description"
+                            },
+                            "response": []
+                        }
+                    },
+                    {
+                        "id": 19,
+                        "name": "Create Environments Copy",
+                        "type": "api",
+                        "parent_id": 14,
+                        "api_properties": {
+                            "request": {
+                                "url": "{{URL}}/api/v1/env",
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": {
+                                        "token": "{{token}}"
+                                    }
+                                },
+                                "body": {
+                                    "raw": "{\r\n\"project_id\" : \"2\",\r\n\"environments\" : [\r\n                        {\r\n                            \"label\" : \"rrrrr\",\r\n                            \"url\" : \"http://google.com\"\r\n                        },\r\n                        {\r\n                            \"label\" : \"rrrrrtttyyyyyy\",\r\n                            \"url\" : \"http://google.com\"\r\n                        }\r\n                    ]\r\n}",
+                                    "mode": "raw",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "header": [],
+                                "method": "POST",
+                                "description": "```\n{\n\t\"success\": true,\n\t\"message\": \"environment_created\",\n\t\"data\": []\n}\n\n ```"
+                            },
+                            "response": []
+                        }
+                    },
+                    {
+                        "id": 14,
+                        "name": "Project",
+                        "type": "folder",
+                        "parent_id": null,
+                        "api_properties": null
+                    },
+                    {
+                        "id": 17,
+                        "name": "Get Profile Copy",
+                        "type": "api",
+                        "parent_id": 13,
+                        "api_properties": {
+                            "request": {
+                                "url": "{{URL}}/api/v1/profile",
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": {
+                                        "token": "{{token}}"
+                                    }
+                                },
+                                "body": {
+                                    "raw": "",
+                                    "mode": "raw",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "header": [],
+                                "method": "GET"
+                            },
+                            "response": []
+                        }
+                    },
+                    {
+                        "id": 23,
+                        "name": "Get Categories Copy",
+                        "type": "api",
+                        "parent_id": 15,
+                        "api_properties": {
+                            "request": {
+                                "url": {
+                                    "raw": "{{URL}}/api/v1/categories?environment_id=228&project_id=83",
+                                    "host": [
+                                        "{{URL}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "categories"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "environment_id",
+                                            "value": "228"
+                                        },
+                                        {
+                                            "key": "project_id",
+                                            "value": "83"
+                                        }
+                                    ]
+                                },
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": {
+                                        "token": "{{token}}"
+                                    }
+                                },
+                                "header": [],
+                                "method": "GET"
+                            },
+                            "response": []
+                        }
+                    },
+                    {
+                        "id": 15,
+                        "name": "Module",
+                        "type": "folder",
+                        "parent_id": null,
+                        "api_properties": null
+                    },
+                    {
+                        "id": 24,
+                        "name": "Test case by category Copy",
+                        "type": "api",
+                        "parent_id": 15,
+                        "api_properties": {
+                            "request": {
+                                "url": "{{URL}}/api/v1/category/501/test-cases",
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": {
+                                        "token": "{{token}}"
+                                    }
+                                },
+                                "header": [],
+                                "method": "GET",
+                                "description": "{ \"success\": true, \"message\": \"Test_cases_found\", \"data\": \\[ { \"id\": 1, \"title\": \"kosatsi pasapoganl\", \"status\": \"draft\", \"category_name\": \"New Cateogry\", \"position\": 0 }, { \"id\": 4, \"title\": \"To verify Account Balance page \\\\\"Next\\\\\" button.\", \"status\": \"draft\", \"category_name\": \"New Cateogry\", \"position\": 1000 }, { \"id\": 3, \"title\": \"To verify \\\\\"Evaluation Stages\\\\\" page \\\\\"Next\\\\\" button.\", \"status\": \"draft\", \"category_name\": \"New Cateogry\", \"position\": 2000 }, { \"id\": 5, \"title\": \"To verify \\\\\"Account Type\\\\\" tiles.\", \"status\": \"draft\", \"category_name\": \"New Cateogry\", \"position\": 2500 }, { \"id\": 2, \"title\": \"To verify \\\\\"START YOUR CHALLENGE\\\\\" button.\", \"status\": \"draft\", \"category_name\": \"New Cateogry\", \"position\": 3000 }, { \"id\": 6, \"title\": \"To verify \\\\\"Confirm Order\\\\\" page fields accept valid inputs.\", \"status\": \"draft\", \"category_name\": \"New Cateogry\", \"position\": 5000 }, { \"id\": 7, \"title\": \"To verify Confirm Order page \\\\\"Next\\\\\" button.\", \"status\": \"draft\", \"category_name\": \"New Cateogry\", \"position\": 6000 }, { \"id\": 8, \"title\": \"To verify Checkout page Submit button.\", \"status\": \"draft\", \"category_name\": \"New Cateogry\", \"position\": 7000 }, { \"id\": 9, \"title\": \"To verify \\\\\"Payment Gateway\\\\\" options.\", \"status\": \"draft\", \"category_name\": \"New Cateogry\", \"position\": 8000 }, { \"id\": 10, \"title\": \"To verify \\\\\"Simulation Success\\\\\" button.\", \"status\": \"draft\", \"category_name\": \"New Cateogry\", \"position\": 9000 }, { \"id\": 13, \"title\": \"Click on the 'Forgot password?' and delete yourself\", \"status\": \"active\", \"category_name\": \"New Cateogry\", \"position\": 10000 }, { \"id\": 14, \"title\": \"Click on the 'Forgot password?' and delete yourself\", \"status\": \"active\", \"category_name\": \"New Cateogry\", \"position\": 11000 } \\]}"
+                            },
+                            "response": []
+                        }
+                    },
+                    {
+                        "id": 20,
+                        "name": "Environments List Copy",
+                        "type": "api",
+                        "parent_id": 14,
+                        "api_properties": {
+                            "request": {
+                                "url": "{{URL}}/api/v1/83/environments",
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": {
+                                        "token": "{{token}}"
+                                    }
+                                },
+                                "header": [],
+                                "method": "GET"
+                            },
+                            "response": []
+                        }
+                    },
+                    {
+                        "id": 21,
+                        "name": "Project list Copy",
+                        "type": "api",
+                        "parent_id": 14,
+                        "api_properties": {
+                            "request": {
+                                "url": "{{URL}}/api/v1/project-list",
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": {
+                                        "token": "{{token}}"
+                                    }
+                                },
+                                "body": {
+                                    "raw": "",
+                                    "mode": "raw"
+                                },
+                                "header": [],
+                                "method": "GET"
+                            },
+                            "response": []
+                        }
+                    }
+                ],
+                "root_path": "An exquisite collection"
+            }
+        }
+      '''
+    }
+  }
+}

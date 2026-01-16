@@ -1,0 +1,24 @@
+meta {
+  name: Get Categories
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{URL}}/api/v1/categories?environment_id=268&project_id=83
+  body: none
+  auth: bearer
+}
+
+params:query {
+  environment_id: 268
+  project_id: 83
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

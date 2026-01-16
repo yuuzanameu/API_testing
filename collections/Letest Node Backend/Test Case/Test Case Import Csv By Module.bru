@@ -1,0 +1,27 @@
+meta {
+  name: Test Case Import Csv By Module
+  type: http
+  seq: 18
+}
+
+post {
+  url: {{URL}}/api/v1/test-case/import-csv
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  file: @file(PropCases.csv)
+  columns: {"expected_outcome": "Expected Outcome", "title": "Title", "steps": "Steps"}
+  project_id: 1
+  environment_id: 1
+  category_id: 3
+}
+
+settings {
+  encodeUrl: true
+}

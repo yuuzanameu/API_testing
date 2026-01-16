@@ -1,0 +1,27 @@
+meta {
+  name: Test case by category
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{URL}}/api/v1/category/:category_id/test-cases
+  body: none
+  auth: bearer
+}
+
+params:path {
+  category_id: 651
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  { "success": true, "message": "Test_cases_found", "data": \[ { "id": 1, "title": "kosatsi pasapoganl", "status": "draft", "category_name": "New Cateogry", "position": 0 }, { "id": 4, "title": "To verify Account Balance page \\"Next\\" button.", "status": "draft", "category_name": "New Cateogry", "position": 1000 }, { "id": 3, "title": "To verify \\"Evaluation Stages\\" page \\"Next\\" button.", "status": "draft", "category_name": "New Cateogry", "position": 2000 }, { "id": 5, "title": "To verify \\"Account Type\\" tiles.", "status": "draft", "category_name": "New Cateogry", "position": 2500 }, { "id": 2, "title": "To verify \\"START YOUR CHALLENGE\\" button.", "status": "draft", "category_name": "New Cateogry", "position": 3000 }, { "id": 6, "title": "To verify \\"Confirm Order\\" page fields accept valid inputs.", "status": "draft", "category_name": "New Cateogry", "position": 5000 }, { "id": 7, "title": "To verify Confirm Order page \\"Next\\" button.", "status": "draft", "category_name": "New Cateogry", "position": 6000 }, { "id": 8, "title": "To verify Checkout page Submit button.", "status": "draft", "category_name": "New Cateogry", "position": 7000 }, { "id": 9, "title": "To verify \\"Payment Gateway\\" options.", "status": "draft", "category_name": "New Cateogry", "position": 8000 }, { "id": 10, "title": "To verify \\"Simulation Success\\" button.", "status": "draft", "category_name": "New Cateogry", "position": 9000 }, { "id": 13, "title": "Click on the 'Forgot password?' and delete yourself", "status": "active", "category_name": "New Cateogry", "position": 10000 }, { "id": 14, "title": "Click on the 'Forgot password?' and delete yourself", "status": "active", "category_name": "New Cateogry", "position": 11000 } \]}
+}

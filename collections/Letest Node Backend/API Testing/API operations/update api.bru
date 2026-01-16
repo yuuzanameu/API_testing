@@ -1,0 +1,145 @@
+meta {
+  name: update api
+  type: http
+  seq: 2
+}
+
+put {
+  url: https://qa-automator-staging.letest.ai/api/v1/api-testing/api/update-api/:api_id
+  body: json
+  auth: bearer
+}
+
+params:path {
+  api_id: 16
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "api_properties": {
+          "request": {
+              "url": "{{URL}}/api/v1/signin",
+              "auth": null,
+              "body": {
+                  "raw": "{\r\n    \"email\": \"bokugavladi@proton.me\",\r\n    \"password\": \"Password@1772\"\r\n}",
+                  "mode": "raw",
+                  "options": {
+                      "raw": {
+                          "language": "json"
+                      }
+                  }
+              },
+              "header": [
+                  {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                  }
+              ],
+              "method": "POST"
+          },
+          "assertions": [
+              {
+                  "expr": "res.body.token",
+                  "operator": "equals",
+                  "value": "12121"
+              }
+          ]
+      }
+  }
+}
+
+script:pre-request {
+  if (bru.getVar('URL')) {
+  //     // console.log(pm.variables.get('alertName'))
+      bru.setVar('URL', '{{URL}}')
+  //     // console.log(pm.variables.get('alertName'))
+  } 
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: update api
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/api/update-api/:api_id
+    method: PUT
+    mode: json
+    params:path: {
+      api_id: 36
+    }
+  
+    body:json: {
+      {
+          "api_properties": {
+              "request": {
+                  "url": "https://qa-automator-staging.letest.ai/api/v1/api-testing/api/update-api/:api_id?thing=thng",
+                  "auth": {
+                      "type": "noauth"
+                  },
+                  "body": {
+                      "raw": "{\r\n    \"email\": \"bokugavladi@proton.me\",\r\n    \"password\": \"Password@1772\"\r\n}",
+                      "mode": "raw",
+                      "options": {
+                          "raw": {
+                              "language": "json"
+                          }
+                      }
+                  },
+                  // "path_variables": [{"key": "api_id", "value": 12}],
+                  // "query_variables": [{"key": "thing", "value": "thng", "disabled": "false"}],
+                  "header": [{"key": "Content-Type", "value": "application/json"}],
+                  "method": "POST"
+              },
+              "assertions": []
+          }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 52
+      ETag: W/"34-Ja40dlmaBt6PnegDs1yAoggGdng"
+      Date: Mon, 06 Oct 2025 12:30:35 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "api_updated",
+            "data": true
+        }
+      '''
+    }
+  }
+}

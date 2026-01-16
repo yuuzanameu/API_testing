@@ -1,0 +1,116 @@
+meta {
+  name: Admin issues
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{URL}}/api/v1/admin/issues?page=1&limit=10
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 1
+  limit: 10
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: issues + pagination/search
+  
+  request: {
+    url: {{URL}}/api/v1/admin/issues?page=2&limit=10&search=Buy
+    method: GET
+    mode: none
+    params:query: {
+      page: 2
+      limit: 10
+      search: Buy
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 2327
+      ETag: W/"917-eiGNt7g/UHR4vUXZb7KUpt8XbQ8"
+      Date: Wed, 08 Oct 2025 10:38:31 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "issues_found",
+            "data": {
+                "issues": [
+                    {
+                        "id": 7977,
+                        "title": "Buy iphone",
+                        "execution_start_date": "2025-07-21T19:14:51.000Z",
+                        "execution_end_date": null,
+                        "description": "**Test Result : Failed** | The website https://sodio.tech is currently unreachable (ERR_CONNECTION_CLOSED). As a result, I was unable to search for the iPhone 15 (128 GB), add it to the cart, or proceed to buy as per your instructions. Please check if the website is available or provide an alternative site to continue the test."
+                    },
+                    {
+                        "id": 7979,
+                        "title": "Buy iphone",
+                        "execution_start_date": "2025-07-21T19:42:57.000Z",
+                        "execution_end_date": null,
+                        "description": "Test Result : FAILURE\n\nThe test case did not achieve the expected outcome. The steps were executed strictly as instructed: (1) searched for 'iphone 15 128 GB', (2) selected the product, (3) attempted to add 'Apple iPhone 15 (128 GB) - Black' to the cart, and (4) navigated to the Cart. However, upon visiting the Cart, it was found to be empty—indicating that the product was not successfully added. Therefore, the next mandatory step ('Click on proceed to buy') could not be performed, and no email could be entered. Thus, the expected flow to buy the iPhone could not be completed, and the test is marked as FAILED."
+                    },
+                    {
+                        "id": 7978,
+                        "title": "Buy iphone",
+                        "execution_start_date": "2025-07-22T12:16:54.000Z",
+                        "execution_end_date": null,
+                        "description": "**Test Result : Failed** | The website https://sodio.tech could not be reached due to a connection error (ERR_CONNECTION_CLOSED). As a result, I was unable to perform any of the required steps: searching for the iPhone, adding it to the cart, or proceeding to buy. Please check if the website is available and try again."
+                    },
+                    {
+                        "id": 8454,
+                        "title": "Buy Black Apple iPhone 15 (128 GB) - Black",
+                        "execution_start_date": "2025-07-28T06:46:25.000Z",
+                        "execution_end_date": null,
+                        "description": "Test Result : FAILURE | The test instructions were followed precisely: navigated to Amazon.in, searched for 'Black Apple iPhone 15 (128 GB) - Black', attempted to add it to the cart, and navigated to the cart. However, after the add-to-cart action, the cart is empty and does not contain the iPhone, thus the expected purchase flow did not complete successfully. The test case is marked as FAILURE."
+                    }
+                ],
+                "pagination": {
+                    "total": "4",
+                    "page": 1,
+                    "limit": 10,
+                    "totalPages": 1
+                }
+            }
+        }
+      '''
+    }
+  }
+}

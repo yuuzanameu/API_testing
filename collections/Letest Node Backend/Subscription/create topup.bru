@@ -1,0 +1,23 @@
+meta {
+  name: create topup
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{URL}}/api/v1/subscription/topup?plan_id=2
+  body: none
+  auth: bearer
+}
+
+params:query {
+  plan_id: 2
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

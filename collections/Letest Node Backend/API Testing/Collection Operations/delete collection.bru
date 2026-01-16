@@ -1,0 +1,23 @@
+meta {
+  name: delete collection
+  type: http
+  seq: 2
+}
+
+delete {
+  url: {{URL}}/api/v1/api-testing/collection/:collection_id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  collection_id: 10
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

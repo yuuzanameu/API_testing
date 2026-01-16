@@ -1,0 +1,29 @@
+meta {
+  name: submit contact form
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{URL}}/api/v1/contact-us
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "first_name": "sasa",
+      "email": "sasa@sa.com",
+      "company_name": "sas",
+      "reason_for_contact": "asa",
+      "message": "sasa",
+      "captcha": {
+          "payload": "eyJhbGdvcml0aG0iOiJTSEEtMjU2IiwiY2hhbGxlbmdlIjoiYWFiZjUzOTZlNWRmZmE3MjJlZmY4N2FlYjYwNGYyMWY4NTYzODQ4NjI5ZjBiNzY1ODk4ZDgwNmI1ZjU3Y2ZhYyIsIm51bWJlciI6OTQ1NTUsInNhbHQiOiI4NWYwNzU4YjJkN2Q5Zjk4MzdkNjg3NGYiLCJzaWduYXR1cmUiOiI3YjU5NGMyYmM3ZjRlNDE2ZGJmMmJmYzljYmY2YTkyYTUzNzc1NDRmN2U3MTE2YWNkM2E2ZWRiZDBiMGMyMmYzIiwidG9vayI6MjY0fQ==",
+          "state": "verified"
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}

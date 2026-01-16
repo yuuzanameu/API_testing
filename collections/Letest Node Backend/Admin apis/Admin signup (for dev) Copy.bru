@@ -1,0 +1,51 @@
+meta {
+  name: Admin signup (for dev) Copy
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{URL}}/api/v1/admin/signup
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "full_name": "Letest Admin",
+      "email": "admin@gmail.com",
+      "password": "Sherlock@4321",
+      "confirm_password": "Sherlock@4321"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  signup endpoint. This is purely for development purposes. The current admin signup frontend can be used as is: you shall provide
+  
+  ```
+  {
+      "full_name": string,
+      "email": string,
+      "password": string,
+      "confirm_password": string
+  }
+  
+   ```
+  
+  which will return you an authentication jwt which should be sent with reqs to protected admin routes such as the admin's dashboard (api/v1/admin/dashboard).
+  
+  you will recieve a JSON payload of the form:
+  
+  ``` json
+  {
+          email: string,
+          id: number, 
+          token: string(jwt token)
+      }
+  
+   ```
+}

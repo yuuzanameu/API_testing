@@ -1,0 +1,15 @@
+meta {
+  name: Update Ticket
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/api/v1/support-ticket/4
+  body: json
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

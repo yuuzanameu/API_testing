@@ -1,0 +1,33 @@
+meta {
+  name: Toggle Test Case Status
+  type: http
+  seq: 20
+}
+
+patch {
+  url: {{URL}}/api/v1/toggle-status/12
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  you'll recieve
+  
+  ```
+  {
+  toggledStatus: 'active' or 'draft',
+  message: string
+  } 
+  
+   ```
+  
+  or an error.
+}

@@ -1,0 +1,153 @@
+meta {
+  name: run coordinator
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{URL}}/api/v1/api-testing/api/run-coordinator/:api_id
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~type: negative
+}
+
+params:path {
+  api_id: 1599
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: positive
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/api/run-coordinator/:api_id?env_id=5
+    method: GET
+    mode: none
+    params:query: {
+      env_id: 5
+    }
+  
+    params:path: {
+      api_id: 284
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 309
+      ETag: W/"135-UYg/5k0LNdZVDyvmzQIJINZGmss"
+      Date: Tue, 25 Nov 2025 09:06:55 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "coordinator results recorded",
+            "data": {
+                "analysis_id": "sasasa",
+                "session_id": "4f91b0b9-ee1b-4094-9401-b936a58f46d8",
+                "websocket_url": "wss://staging-ai-services-api.letest.ai/api/v1/coordinator-simple/ws/4f91b0b9-ee1b-4094-9401-b936a58f46d8",
+                "websocket_protocol": "wss",
+                "status": "ready"
+            }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: negative
+  
+  request: {
+    url: {{URL}}/api/v1/api-testing/api/run-coordinator/:api_id?type=negative
+    method: GET
+    mode: none
+    params:query: {
+      type: negative
+    }
+  
+    params:path: {
+      api_id: 1697
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 113
+      ETag: W/"71-a02En+rJ5W1pr4MDGAox5ddV1AY"
+      Date: Fri, 05 Dec 2025 05:25:14 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: Internal Server Error
+      text: 500
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "coordinator results recorded",
+            "data": {
+                "analysis_id": "sasasa",
+                "session_id": "4f91b0b9-ee1b-4094-9401-b936a58f46d8",
+                "websocket_url": "wss://staging-ai-services-api.letest.ai/api/v1/coordinator-simple/ws/4f91b0b9-ee1b-4094-9401-b936a58f46d8",
+                "websocket_protocol": "wss",
+                "status": "ready"
+            }
+        }
+      '''
+    }
+  }
+}

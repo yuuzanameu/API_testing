@@ -1,0 +1,29 @@
+meta {
+  name: Create Blog
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/api/v1/blogs
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:multipart-form {
+  title: gggg
+  description: asd
+  category_id: 3
+  tags: df,df,df
+  feature_image: @file()
+  seo_title: asdasd
+  meta_description: sdasdasd
+}
+
+settings {
+  encodeUrl: true
+}

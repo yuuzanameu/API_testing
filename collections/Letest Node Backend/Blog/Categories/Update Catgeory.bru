@@ -1,0 +1,26 @@
+meta {
+  name: Update Catgeory
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/api/v1/blog/categories/1
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "name": "test",
+      "description" : ""
+  }
+}
+
+settings {
+  encodeUrl: true
+}

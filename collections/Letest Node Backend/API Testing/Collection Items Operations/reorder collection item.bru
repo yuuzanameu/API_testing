@@ -1,0 +1,29 @@
+meta {
+  name: reorder collection item
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{URL}}/api/v1/api-testing/collection-item/reorder/6
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "prev": 10,
+      "next": 1,
+      "target_parent_id": null,
+      "collection_id": 1
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

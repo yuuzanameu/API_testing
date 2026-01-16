@@ -1,0 +1,25 @@
+meta {
+  name: Signup
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/api/v1/signup
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "full_name" : "test",
+      "company_name":"json",
+      "email" : "nobita@personal.example.com",
+      "password":"Sherlock@4321",
+      "contact_number" : "8160958620"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

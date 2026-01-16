@@ -1,0 +1,22 @@
+meta {
+  name: Store Blog Comment
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{URL}}/api/v1/blogs/8/comments
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name" : "sandip",
+      "comment" : "asdasd"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

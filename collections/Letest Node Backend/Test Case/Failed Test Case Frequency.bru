@@ -1,0 +1,25 @@
+meta {
+  name: Failed Test Case Frequency
+  type: http
+  seq: 23
+}
+
+get {
+  url: {{URL}}/api/v1/test-cases/failed-frequency?environment_id=1&limit=100&page=1
+  body: none
+  auth: bearer
+}
+
+params:query {
+  environment_id: 1
+  limit: 100
+  page: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}

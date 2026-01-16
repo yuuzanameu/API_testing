@@ -1,0 +1,25 @@
+meta {
+  name: verify otp
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{URL}}/api/v1/env/268/verify-otp
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "otp":"495841"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

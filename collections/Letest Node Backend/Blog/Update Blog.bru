@@ -1,0 +1,25 @@
+meta {
+  name: Update Blog
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{URL}}/api/v1/blogs/5
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  title: rr
+  description: rrr
+  category_id: 2
+  tags: sss
+  feature_image: @file()
+  seo_title: sss
+  meta_description: sss
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,103 @@
+meta {
+  name: Categories List
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{URL}}/api/v1/blog/categories?page=1&limit=2
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 1
+  limit: 2
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: Categories List
+  
+  request: {
+    url: {{URL}}/api/v1/blog/categories?page=1&limit=2
+    method: GET
+    mode: none
+    params:query: {
+      page: 1
+      limit: 2
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 439
+      ETag: W/"1b7-XyaXMnj5XoU8m3M2BqoLKZ1rup8"
+      Date: Wed, 08 Oct 2025 08:39:38 GMT
+      Connection: keep-alive
+      Keep-Alive: timeout=5
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "category_list",
+            "data": {
+                "pagination": {
+                    "totalItems": 2,
+                    "totalPages": 1,
+                    "currentPage": 1,
+                    "limit": 2,
+                    "hasNextPage": false,
+                    "hasPreviousPage": false
+                },
+                "data": [
+                    {
+                        "id": 8,
+                        "name": "AI in Software Testing",
+                        "description": "",
+                        "created_at": "2025-10-08T07:32:48.190Z",
+                        "updated_at": "2025-10-08T07:32:48.190Z"
+                    },
+                    {
+                        "id": 7,
+                        "name": "AI Testing",
+                        "description": "",
+                        "created_at": "2025-10-07T09:23:38.382Z",
+                        "updated_at": "2025-10-07T09:23:38.382Z"
+                    }
+                ]
+            }
+        }
+      '''
+    }
+  }
+}

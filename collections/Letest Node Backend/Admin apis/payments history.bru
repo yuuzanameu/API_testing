@@ -1,0 +1,179 @@
+meta {
+  name: payments history
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{URL}}/api/v1/admin/payment-history?page=3&limit=10
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 3
+  limit: 10
+  ~search: 
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+example {
+  name: payments history
+  
+  request: {
+    url: {{URL}}/api/v1/admin/payment-history?page=1&limit=10
+    method: GET
+    mode: none
+    params:query: {
+      page: 1
+      limit: 10
+      ~search: null
+    }
+  }
+  
+  response: {
+    headers: {
+      Server: nginx
+      Date: Thu, 16 Oct 2025 07:59:28 GMT
+      Content-Type: application/json; charset=utf-8
+      Content-Length: 2207
+      Connection: keep-alive
+      Content-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      Cross-Origin-Opener-Policy: same-origin
+      Cross-Origin-Resource-Policy: same-origin
+      Origin-Agent-Cluster: ?1
+      Referrer-Policy: no-referrer
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Content-Type-Options: nosniff
+      X-DNS-Prefetch-Control: off
+      X-Download-Options: noopen
+      X-Frame-Options: SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies: none
+      X-XSS-Protection: 0
+      Access-Control-Allow-Origin: *
+      ETag: W/"89f-wPFRI7WUTGZHMwWOSTiri2RKlsM"
+    }
+  
+    status: {
+      code: OK
+      text: 200
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+            "success": true,
+            "message": "payment history fetched",
+            "data": {
+                "data": [
+                    {
+                        "reference_id": "I-UG7T01ECDH6Y",
+                        "transaction_id": "2GN37528Y8373301J",
+                        "account_id": "5BUMJNMUBUYCE",
+                        "transaction_date": "2025-09-16T11:19:56.000Z",
+                        "transaction_amount": "2.00",
+                        "company_name": null,
+                        "email": null
+                    },
+                    {
+                        "reference_id": "I-XK2VNLCSD07C",
+                        "transaction_id": "1GT61749TV929680U",
+                        "account_id": "5BUMJNMUBUYCE",
+                        "transaction_date": "2025-09-16T14:08:10.000Z",
+                        "transaction_amount": "49.00",
+                        "company_name": null,
+                        "email": null
+                    },
+                    {
+                        "reference_id": "I-99CAGBUC2AT9",
+                        "transaction_id": "80249150C4018524F",
+                        "account_id": "5BUMJNMUBUYCE",
+                        "transaction_date": "2025-09-16T12:02:15.000Z",
+                        "transaction_amount": "2.00",
+                        "company_name": null,
+                        "email": null
+                    },
+                    {
+                        "reference_id": "I-H66CNAAVUHS2",
+                        "transaction_id": "05B22146CY5636715",
+                        "account_id": "5BUMJNMUBUYCE",
+                        "transaction_date": "2025-09-16T15:18:35.000Z",
+                        "transaction_amount": "99.00",
+                        "company_name": null,
+                        "email": null
+                    },
+                    {
+                        "reference_id": "I-WWXBMXSE9SG6",
+                        "transaction_id": "3DE312834J431483B",
+                        "account_id": "5BUMJNMUBUYCE",
+                        "transaction_date": "2025-09-16T13:03:34.000Z",
+                        "transaction_amount": "2.00",
+                        "company_name": null,
+                        "email": null
+                    },
+                    {
+                        "reference_id": "I-3J33JVHG1D8J",
+                        "transaction_id": "32W1494149545792T",
+                        "account_id": "5BUMJNMUBUYCE",
+                        "transaction_date": "2025-09-16T10:27:25.000Z",
+                        "transaction_amount": "2.00",
+                        "company_name": null,
+                        "email": null
+                    },
+                    {
+                        "reference_id": "I-Y8HE9F37392D",
+                        "transaction_id": "8UU328170H252861M",
+                        "account_id": "5BUMJNMUBUYCE",
+                        "transaction_date": "2025-09-16T15:12:43.000Z",
+                        "transaction_amount": "2.00",
+                        "company_name": null,
+                        "email": null
+                    },
+                    {
+                        "reference_id": "I-7S1HUCNFHY5J",
+                        "transaction_id": "2B958218WT1821155",
+                        "account_id": "5BUMJNMUBUYCE",
+                        "transaction_date": "2025-09-16T10:51:09.000Z",
+                        "transaction_amount": "49.00",
+                        "company_name": null,
+                        "email": null
+                    },
+                    {
+                        "reference_id": "I-T8L9HS3MPE7X",
+                        "transaction_id": "4X256816G37645156",
+                        "account_id": "5BUMJNMUBUYCE",
+                        "transaction_date": "2025-09-16T11:30:57.000Z",
+                        "transaction_amount": "2.00",
+                        "company_name": null,
+                        "email": null
+                    },
+                    {
+                        "reference_id": "I-M08SEU2A3CKA",
+                        "transaction_id": "53H22552FR444335B",
+                        "account_id": "5BUMJNMUBUYCE",
+                        "transaction_date": "2025-09-16T14:47:44.000Z",
+                        "transaction_amount": "2.00",
+                        "company_name": null,
+                        "email": null
+                    }
+                ],
+                "pagination": {
+                    "total": 273,
+                    "page": 1,
+                    "limit": 10,
+                    "total_pages": 28
+                }
+            }
+        }
+      '''
+    }
+  }
+}

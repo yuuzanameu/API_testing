@@ -1,0 +1,25 @@
+meta {
+  name: Change Test Case Status
+  type: http
+  seq: 19
+}
+
+put {
+  url: {{URL}}/api/v1/change-status/11
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "status" : "active" //active , draft
+  }
+}
+
+settings {
+  encodeUrl: true
+}

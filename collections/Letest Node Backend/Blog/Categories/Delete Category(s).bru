@@ -1,0 +1,25 @@
+meta {
+  name: Delete Category(s)
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{URL}}/api/v1/blog/categories
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+      "categoryIds": [2]
+  }
+}
+
+settings {
+  encodeUrl: true
+}
